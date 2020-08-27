@@ -58,7 +58,7 @@ function App() {
       <Head expanded={expanded}>
         <Navbar variant="dark" bg="dark" className="justify-content-between" sticky="top">
           <Image className="px-1" alt="logo" src="favicon.ico" width="28" height="20" />
-          <Navbar.Brand className="px-1">sacconazzo home page</Navbar.Brand>
+          <Navbar.Brand className="px-1">sacconazzo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className="px-2">by <a href="https://giona.tech" target="_blank" rel="noopener noreferrer"><TitleAnim static texts={["giona.tech",]} /></a></Navbar.Text>
