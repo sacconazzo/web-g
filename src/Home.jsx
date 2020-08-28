@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card'
 import Fade from 'react-bootstrap/Fade'
 import TitleAnim from './TitleAnim.jsx'
 import ToastSys from './ToastSys.jsx'
+import Draggable from 'react-draggable';
 
 const Home = () => {
   const [loaded, setLoaded] = useState(false);
@@ -24,39 +25,50 @@ const Home = () => {
         <Navbar.Brand>Welcome</Navbar.Brand>
       </Navbar>
       <Fade in={loaded}>
-        <Container className="p-3">
+        <Container className="p-3 text-center">
           <Jumbotron>
-            <h1 className="header"><TitleAnim texts={["Ciao", "viaggiatore!"]} /></h1>
-            <h3 className="header">benvenuto nel pannello di controllo di sacconazzo</h3>
+            <h1 className="header"><TitleAnim texts={["Hi,", "traveler!"]} /></h1>
+            <h4 className="header">my name is Giona, I'm a full-stack software engineer at <a href="https://www.alteaup.it" target="_blank" rel="noopener noreferrer">Altea Up</a></h4>
+            <h4 className="header"><a href="mailto:info@giona.tech" >contact me</a> for info, consultancy or collaborations</h4>
           </Jumbotron>
           <CardDeck>
-          <Card bg="light" border="info" className="p-3 text-center align-items-center" style={{ width: '18rem' }}>
-              <Card.Body>
-                <Card.Title>
-                  Software Engineer</Card.Title>
-              </Card.Body>
-            </Card>
-            <Card bg="light" border="info" className="p-3 text-center" style={{ width: '18rem' }}>
-              <Card.Body>
-                <Card.Title>
-                  SAP ERP Certified Tech Consultant</Card.Title>
-              </Card.Body>
-            </Card>
-            <Card bg="light" border="info" className="p-3 text-center" style={{ width: '18rem' }}>
-              <Card.Body>
-                <Card.Title>
-                  SAP Fiori Certified Web & App Developer
+            <Draggable>
+              <Card bg="light" border="info" className="p-3 text-center" >
+                <Card.Body>
+                  <Card.Title>
+                    SAP ERP Certified Tech Expert</Card.Title>
+                </Card.Body>
+              </Card>
+            </Draggable>
+            <Draggable>
+              <Card bg="light" border="info" className="p-3 text-center" >
+                <Card.Body>
+                  <Card.Title>
+                    SAP Fiori Certified Developer
                 </Card.Title>
-              </Card.Body>
-            </Card>
-            <Card bg="light" border="info" className="p-3 text-center" style={{ width: '18rem' }}>
-              <Card.Body>
-                <Card.Title>JS React & Java Android Developer</Card.Title>
-                <Card.Text>
+                </Card.Body>
+              </Card>
+            </Draggable>
+            <Draggable>
+              <Card bg="light" border="info" className="p-3 text-center" >
+                <Card.Body>
+                  <Card.Title>React & HTML5 for Web & Mob apps</Card.Title>
+                  <Card.Text>
 
-                </Card.Text>
-              </Card.Body>
-            </Card>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Draggable>
+            <Draggable>
+              <Card bg="light" border="info" className="p-3 text-center" >
+                <Card.Body>
+                  <Card.Title>Java Android Developer</Card.Title>
+                  <Card.Text>
+
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Draggable>
           </CardDeck>
         </Container>
       </Fade>
