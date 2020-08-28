@@ -8,15 +8,35 @@ import Card from 'react-bootstrap/Card'
 import Fade from 'react-bootstrap/Fade'
 import TitleAnim from './TitleAnim.jsx'
 import ToastSys from './ToastSys.jsx'
+import Editor from './Editor.jsx'
 
 const Home = () => {
   const [loaded, setLoaded] = useState(false);
+  const [content, setContent] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true)
     }, 50)
-  })
+  }, [loaded])
+
+  useEffect(() => {
+
+    if (!content) {
+
+      fetch('https://sacconazzo.altervista.org/api/?fn=get-bethel-stat', {
+        method: "POST",
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        body: "usr=GRighini&token=a68c861c2fdcc868a04be4da2d08fc2cad17ac793117c6cd8e5743f12e3fe9e1&from=2020-09-15"
+      })
+        .then(response => response.json())
+        .then(json => setContent(json.stats[1].note))
+
+    }
+
+  }, [content])
 
   return (
     <div>
@@ -65,6 +85,12 @@ const Home = () => {
             </Card>
 
           </CardDeck>
+
+        </Container>
+      </Fade>
+      <Fade in={!!content}>
+        <Container className="mt-2 mb-2" >
+          <Editor content={content} bingo={content => { }} />
         </Container>
       </Fade>
       <ToastSys loaded={loaded} />
