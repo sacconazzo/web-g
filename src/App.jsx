@@ -19,6 +19,7 @@ const Main = styled.main`
     position: relative;
     overflow: auto;
     transition: all .15s;
+    background-color: #FCFCFD;
     margin-left: ${props => (props.expanded ? 240 : 64)}px;
     height: calc(100vh - 56px);
 `;
