@@ -8,7 +8,6 @@ import Card from 'react-bootstrap/Card'
 import Fade from 'react-bootstrap/Fade'
 import TitleAnim from './TitleAnim.jsx'
 import ToastSys from './ToastSys.jsx'
-import Draggable from 'react-draggable';
 
 const Home = () => {
   const [loaded, setLoaded] = useState(false);
@@ -32,43 +31,39 @@ const Home = () => {
             <h4 className="header"><a href="mailto:info@giona.tech" >contact me</a> for info, consultancy or collaborations</h4>
           </Jumbotron>
           <CardDeck>
-            <Draggable>
-              <Card bg="light" border="info" className="p-3 text-center" >
-                <Card.Body>
-                  <Card.Title>
-                    SAP ERP Certified Tech Expert</Card.Title>
-                </Card.Body>
-              </Card>
-            </Draggable>
-            <Draggable>
-              <Card bg="light" border="info" className="p-3 text-center" >
-                <Card.Body>
-                  <Card.Title>
-                    SAP Fiori Certified Developer
+
+            <Card bg="light" border="info" className="p-3 text-center" >
+              <Card.Body>
+                <Card.Title>
+                  SAP ERP Certified Tech Expert</Card.Title>
+              </Card.Body>
+            </Card>
+            <Card bg="light" border="info" className="p-3 text-center" >
+              <Card.Body>
+                <Card.Title>
+                  SAP Fiori Certified Developer
                 </Card.Title>
-                </Card.Body>
-              </Card>
-            </Draggable>
-            <Draggable>
-              <Card bg="light" border="info" className="p-3 text-center" >
-                <Card.Body>
-                  <Card.Title>React & HTML5 for Web & Mob apps</Card.Title>
-                  <Card.Text>
+              </Card.Body>
+            </Card>
 
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Draggable>
-            <Draggable>
-              <Card bg="light" border="info" className="p-3 text-center" >
-                <Card.Body>
-                  <Card.Title>Java Android Developer</Card.Title>
-                  <Card.Text>
+            <Card bg="light" border="info" className="p-3 text-center" >
+              <Card.Body>
+                <Card.Title>React & HTML5 for Web & Mob apps</Card.Title>
+                <Card.Text>
 
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Draggable>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+
+            <Card bg="light" border="info" className="p-3 text-center" >
+              <Card.Body>
+                <Card.Title>Java Android Developer</Card.Title>
+                <Card.Text>
+
+                </Card.Text>
+              </Card.Body>
+            </Card>
+
           </CardDeck>
         </Container>
       </Fade>
