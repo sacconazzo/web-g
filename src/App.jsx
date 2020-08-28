@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home.jsx'
 import Private from './Private.jsx'
 import Login from './Login.jsx'
+import Icon from './assets/favicon.ico'
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
@@ -58,7 +59,7 @@ function App() {
     <>
       <Head expanded={expanded}>
         <Navbar variant="dark" bg="dark" className="justify-content-between" sticky="top">
-          <Image className="px-1" alt="logo" src="favicon.ico" width="28" height="20" />
+          <Image className="px-1" alt="logo" src={Icon} width="28" height="20" />
           <Navbar.Brand className="px-1">sacconazzo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
