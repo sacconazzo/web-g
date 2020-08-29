@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import JoditEditor from "jodit-react";
 
 const Editor = (props) => {
@@ -11,9 +11,9 @@ const Editor = (props) => {
 
     return (
         <JoditEditor
-            //ref={editor}
+            ref={editor}
             value={props.content}
-            //config={config}
+            config={config}
             //tabIndex={1} // tabIndex of textarea
             //onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
             onChange={newContent => { props.bingo(newContent) }}

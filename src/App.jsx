@@ -22,7 +22,7 @@ const Main = styled.main`
     transition: all .15s;
     background-color: #FCFCFD;
     margin-left: ${props => (props.expanded ? 240 : 64)}px;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 56px - 57px);
 `;
 const Head = styled.div`
     position: relative;
@@ -121,6 +121,13 @@ function App() {
             setView('home')
           }} />}
         </Main>
+        <Navbar variant="light" bg="light" className="justify-content-between border-top" sticky="bottom">
+          <Navbar.Brand className="px-1"></Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text className="px-2">© Giona Righini 2020</Navbar.Text>
+          </Navbar.Collapse>
+        </Navbar>
       </Bar>
     </>
   );
