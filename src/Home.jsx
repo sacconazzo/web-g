@@ -88,9 +88,9 @@ const Home = () => {
       </Fade>
       <Fade in={!!content && status < 2}>
         <Container className="mt-4 mb-2" >
-          <Editor content={content} bingo={content => { msg = content }} />
+          {status < 2 && <Editor content={content} bingo={content => { msg = content }} />}
           <Button disabled={status > 0} className="mt-2 mb-2 float-right" variant="primary" onClick={() => {
-            debugger;
+
             if (!msg) return
 
             var payload = {
