@@ -3,13 +3,13 @@ import Toast from 'react-bootstrap/Toast'
 
 
 const ToastSys = (props) => {
-    const [loadedExt, setShowExt] = useState(false);
+    const [loadedExt, setShowExt] = useState(0);
     useEffect(() => {
-
-        setTimeout(() => {
-            setShowExt(true)
-        }, 3000)
-
+        if (loadedExt === 0) {
+            setTimeout(() => {
+                setShowExt(1)
+            }, 3000)
+        }
     }, [loadedExt])
 
     return (
@@ -21,7 +21,7 @@ const ToastSys = (props) => {
                 width: '300px',
             }}
         >
-            <Toast className="m-3 d-none d-lg-block" show={loadedExt} onClose={() => setShowExt(false)}>
+            <Toast className="m-3 d-none d-lg-block" show={loadedExt === 1} onClose={() => setShowExt(2)}>
                 <Toast.Header>
                     <strong className="mr-auto">Giusto</strong>
                     <small className="mr-auto">un saluto</small>

@@ -63,15 +63,21 @@ function App() {
           <Navbar.Brand className="px-1">sacconazzo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text className="px-2">by <a href="https://giona.tech" target="_blank" rel="noopener noreferrer"><TitleAnim static texts={["giona.tech",]} /></a></Navbar.Text>
+            <Navbar.Text className="px-2">by <a href="https://giona.tech" target="_blank" rel="noopener noreferrer"><TitleAnim static texts={["giona.tech"]} /></a></Navbar.Text>
           </Navbar.Collapse>
           <Form inline>
 
             <OverlayTrigger
               placement="bottom"
+              overlay={<Tooltip id="button-tooltip-2">linkedin.com/in/giona-righini</Tooltip>}
+            >
+              <Button variant="outline-primary" className="mr-sm-2" href="https://www.linkedin.com/in/giona-righini" target="_blank" rel="noopener noreferrer"><i className="fa fa-fw fa-linkedin" style={{ fontSize: '1.25em' }}></i></Button>
+            </OverlayTrigger>
+            <OverlayTrigger
+              placement="bottom"
               overlay={<Tooltip id="button-tooltip-2">github.com/sacconazzo</Tooltip>}
             >
-              <Button variant="outline-success" className="mr-sm-2" href="https://github.com/sacconazzo" target="_blank"><i className="fa fa-fw fa-github" style={{ fontSize: '1.25em' }}></i></Button>
+              <Button variant="outline-success" className="mr-sm-2 d-none d-md-block" href="https://github.com/sacconazzo" target="_blank" rel="noopener noreferrer"><i className="fa fa-fw fa-github" style={{ fontSize: '1.25em' }}></i></Button>
             </OverlayTrigger>
           </Form>
         </Navbar>
