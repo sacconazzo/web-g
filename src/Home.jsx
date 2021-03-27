@@ -44,7 +44,7 @@ const Home = () => {
         <Container className="p-3 text-center">
           <Jumbotron style={{ minWidth: '12rem' }}>
             <h1 className="header"><TitleAnim texts={["Hi,", "traveler!"]} /></h1>
-            <h4 className="header">my name is Giona, I'm a full-stack engineer at <a href="https://www.alteaup.it" target="_blank" rel="noopener noreferrer">Altea Up</a></h4>
+            <h4 className="header">here is Giona, I'm a full-stack engineer at <a href="https://www.alteaup.it" target="_blank" rel="noopener noreferrer">Altea Up</a></h4>
             <h4 className="header"><a href="mailto:info@giona.tech" >contact me</a> for info, consultancy or collaborations</h4>
           </Jumbotron>
           <CardDeck className="">

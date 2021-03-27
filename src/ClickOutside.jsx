@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
 
 export default class ClickOutside extends Component {
   static propTypes = {
-    onClickOutside: PropTypes.func.isRequired
+    onClickOutside: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -18,22 +18,26 @@ export default class ClickOutside extends Component {
 
   render() {
     const { children, onClickOutside, ...props } = this.props
-    return <div {...props} ref={this.getContainer}>{children}</div>
+    return (
+      <div {...props} ref={this.getContainer}>
+        {children}
+      </div>
+    )
   }
 
   componentDidMount() {
-    document.addEventListener('touchend', this.handle, true)
-    document.addEventListener('click', this.handle, true)
+    document.addEventListener("touchend", this.handle, true)
+    document.addEventListener("click", this.handle, true)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('touchend', this.handle, true)
-    document.removeEventListener('click', this.handle, true)
+    document.removeEventListener("touchend", this.handle, true)
+    document.removeEventListener("click", this.handle, true)
   }
 
-  handle = e => {
-    if (e.type === 'touchend') this.isTouch = true
-    if (e.type === 'click' && this.isTouch) return
+  handle = (e) => {
+    if (e.type === "touchend") this.isTouch = true
+    if (e.type === "click" && this.isTouch) return
     const { onClickOutside } = this.props
     const el = this.container
     if (el && !el.contains(e.target)) onClickOutside(e)
