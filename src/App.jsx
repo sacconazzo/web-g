@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import "./App.css";
-import Home from "./Home.jsx";
-import Private from "./Private.jsx";
-import Monitor from "./Monitor.jsx";
-import Login from "./Login.jsx";
-import Icon from "./assets/favicon.ico";
-import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
-import TitleAnim from "./TitleAnim.jsx";
-import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import "font-awesome/css/font-awesome.min.css";
-import styled from "styled-components";
+import React, { useState } from "react"
+import "./App.css"
+import Home from "./Home.jsx"
+import Private from "./Private.jsx"
+import Monitor from "./Monitor.jsx"
+import Login from "./Login.jsx"
+import Icon from "./assets/favicon.ico"
+import Navbar from "react-bootstrap/Navbar"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+import Image from "react-bootstrap/Image"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
+import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav"
+import TitleAnim from "./TitleAnim.jsx"
+import "@trendmicro/react-sidenav/dist/react-sidenav.css"
+import "font-awesome/css/font-awesome.min.css"
+import styled from "styled-components"
 
 const Main = styled.main`
   position: relative;
@@ -24,64 +24,49 @@ const Main = styled.main`
   background-color: #fcfcfd;
   margin-left: ${(props) => (props.expanded ? 240 : 64)}px;
   height: calc(100vh - 56px - 57px);
-`;
+`
 const Head = styled.div`
   position: relative;
   overflow: auto;
   height: 56px;
-`;
+`
 const Bar = styled.div`
   position: relative;
   height: calc(100vh - 56px);
-`;
+`
 const Separator = styled.div`
   clear: both;
   position: relative;
   margin: 0.8rem;
   background-color: #f9dcdd;
   height: 1px;
-`;
+`
 
 const SideNavF = styled(SideNav)`
   background: #34558b;
-`;
+`
 
-var auth = localStorage.getItem("auth");
+var auth = localStorage.getItem("auth")
 
 function App() {
-  var sel = window.location.href.split("#/")[1];
+  var sel = window.location.href.split("#/")[1]
 
-  sel = sel === "" || !sel ? "home" : sel;
+  sel = sel === "" || !sel ? "home" : sel
 
-  const [view, setView] = useState(sel);
-  const [expanded, setState] = useState(false);
+  const [view, setView] = useState(sel)
+  const [expanded, setState] = useState(false)
 
   return (
     <>
       <Head expanded={expanded}>
-        <Navbar
-          variant="dark"
-          bg="dark"
-          className="justify-content-between"
-          sticky="top"
-        >
-          <Image
-            className="px-1"
-            alt="logo"
-            src={Icon}
-            width="28"
-            height="20"
-          />
+        <Navbar variant="dark" bg="dark" className="justify-content-between" sticky="top">
+          <Image className="px-1" alt="logo" src={Icon} width="28" height="20" />
           <Navbar.Brand className="px-1">sacconazzo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className="px-2">
               by{" "}
-              <a
-                href="https://giona.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://giona.tech" target="_blank" rel="noopener noreferrer">
                 <TitleAnim static texts={["giona.tech"]} />
               </a>
             </Navbar.Text>
@@ -89,11 +74,7 @@ function App() {
           <Form inline>
             <OverlayTrigger
               placement="bottom"
-              overlay={
-                <Tooltip id="button-tooltip-2">
-                  linkedin.com/in/giona-righini
-                </Tooltip>
-              }
+              overlay={<Tooltip id="button-tooltip-2">linkedin.com/in/giona-righini</Tooltip>}
             >
               <Button
                 variant="outline-primary"
@@ -102,18 +83,10 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i
-                  className="fa fa-fw fa-linkedin"
-                  style={{ fontSize: "1.25em" }}
-                ></i>
+                <i className="fa fa-fw fa-linkedin" style={{ fontSize: "1.25em" }}></i>
               </Button>
             </OverlayTrigger>
-            <OverlayTrigger
-              placement="bottom"
-              overlay={
-                <Tooltip id="button-tooltip-2">github.com/sacconazzo</Tooltip>
-              }
-            >
+            <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">github.com/sacconazzo</Tooltip>}>
               <Button
                 variant="outline-success"
                 className="mr-sm-2 d-none d-md-block"
@@ -121,10 +94,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i
-                  className="fa fa-fw fa-github"
-                  style={{ fontSize: "1.25em" }}
-                ></i>
+                <i className="fa fa-fw fa-github" style={{ fontSize: "1.25em" }}></i>
               </Button>
             </OverlayTrigger>
           </Form>
@@ -134,12 +104,12 @@ function App() {
         <SideNavF
           expanded={expanded}
           onToggle={(expanded) => {
-            setState(expanded);
+            setState(expanded)
           }}
           onSelect={(selected) => {
-            const to = "#/" + selected;
+            const to = "#/" + selected
             if (view !== to) {
-              setView(selected);
+              setView(selected)
             }
           }}
         >
@@ -147,38 +117,26 @@ function App() {
           <SideNav.Nav selected={view} defaultSelected={sel}>
             <NavItem eventKey="home">
               <NavIcon>
-                <i
-                  className="fa fa-fw fa-home"
-                  style={{ fontSize: "1.75em" }}
-                />
+                <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Home</NavText>
             </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
-                <i
-                  className="fa fa-fw fa-percent"
-                  style={{ fontSize: "1.75em" }}
-                />
+                <i className="fa fa-fw fa-percent" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
             <NavItem eventKey="private">
               <NavIcon>
-                <i
-                  className="fa fa-fw fa-sign-in"
-                  style={{ fontSize: "1.75em" }}
-                />
+                <i className="fa fa-fw fa-sign-in" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Private</NavText>
             </NavItem>
             <Separator />
             <NavItem eventKey="login">
               <NavIcon>
-                <i
-                  className="fa fa-fw fa-cogs"
-                  style={{ fontSize: "1.75em" }}
-                />
+                <i className="fa fa-fw fa-cogs" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Keys</NavText>
             </NavItem>
@@ -191,31 +149,26 @@ function App() {
           {view === "login" && (
             <Login
               close={() => {
-                setView("home");
+                setView("home")
               }}
               logged={(_auth) => {
-                auth = _auth;
-                localStorage.setItem("auth", auth);
-                setView("home");
+                auth = _auth
+                localStorage.setItem("auth", auth)
+                setView("home")
               }}
             />
           )}
         </Main>
-        <Navbar
-          variant="light"
-          bg="light"
-          className="justify-content-between border-top"
-          sticky="bottom"
-        >
+        <Navbar variant="light" bg="light" className="justify-content-between border-top" sticky="bottom">
           <Navbar.Brand className="px-1"></Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text className="px-2">© Giona Righini 2020</Navbar.Text>
+            <Navbar.Text className="px-2">© Giona Righini {new Date().getFullYear()}</Navbar.Text>
           </Navbar.Collapse>
         </Navbar>
       </Bar>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
