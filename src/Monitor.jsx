@@ -23,7 +23,7 @@ const Monitor = (props) => {
 
   const [refresh, setRefresh] = useState(0)
   useEffect(() => {
-    fetch("https://giona.sytes.net/cpu_load", {
+    fetch("https://api.giona.tech/cpu_load", {
       method: "GET",
       credentials: "include",
     })
