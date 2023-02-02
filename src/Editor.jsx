@@ -6,7 +6,8 @@ const Editor = (props) => {
     //const [content, setContent] = useState('')
 
     const config = {
-        readonly: false // all options from https://xdsoft.net/jodit/doc/
+        readonly: false, // all options from https://xdsoft.net/jodit/doc/
+        toolbar: false
     }
 
     return (
