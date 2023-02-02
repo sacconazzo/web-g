@@ -53,9 +53,9 @@ const Home = () => {
               <a href="https://hnrg.it" target="_blank" rel="noopener noreferrer">
                 AlteaFED
               </a>
-            </h4>
+            </h4><p></p>
             <h4 className="header">
-              <a href="mailto:info@giona.tech">contact me</a> for info, consultancy or collaborations
+              by your side to realize your vision
             </h4>
           </Jumbotron>
           <CardDeck className="">

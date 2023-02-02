@@ -26,9 +26,9 @@ const ToastSys = (props) => {
           <small className="mr-auto">un saluto</small>
         </Toast.Header>
         <Toast.Body>
-          Grazie della visita! Per ogni info contattami... <strong>info@giona.tech</strong>. In alto troverai i link al{" "}
+          Grazie della visita! In alto troverai i link al{" "}
           <strong>sito web</strong>, al <strong>profilo linkedin</strong> e al{" "}
-          <strong>portfolio pubblico su GitHub</strong>. Per qualsiasi altra cosa, sono a tua disposizione...
+          <strong>portfolio pubblico su GitHub</strong>. A tua disposizione per ogni informazione.
         </Toast.Body>
       </Toast>
       <Toast className="m-3" onClose={() => props.messageokok()} show={props.messageok} delay={3000} autohide>
