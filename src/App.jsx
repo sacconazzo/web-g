@@ -65,7 +65,7 @@ function App() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className="px-2">
-              by{" "}
+              @{" "}
               <a href="https://giona.tech" target="_blank" rel="noopener noreferrer">
                 <TitleAnim static texts={["giona.tech"]} />
               </a>
