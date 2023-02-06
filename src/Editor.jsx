@@ -7,13 +7,18 @@ function checkMessage(editor) {
     statusbar.style.backgroundColor = '#f8f8f8';
     statusbar.style.fontSize = '11px';
     // statusbar.style.color = '#DC143C';
-    statusbar.style.padding = '1px 4px';
-    // statusbar.style.borderTop = '1px solid #dadada';
 
     function calcStat() {
         const text = Jodit.modules.Helpers.trim(editor.editor.innerText)
         const emailsArray = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
-        statusbar.innerText = emailsArray != null && emailsArray.length ? '' : 'your email reference is currently missing';
+        if (emailsArray != null && emailsArray.length) {
+            statusbar.innerText = statusbar.style.borderTop = statusbar.style.padding = '';
+        } else {
+            statusbar.innerText =  'your email reference is currently missing';
+            statusbar.style.borderTop = '1px solid #dadada';
+            statusbar.style.padding = '1px 4px';
+        }
+        
     }
 
     editor.events
