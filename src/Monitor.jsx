@@ -88,7 +88,7 @@ const Monitor = (props) => {
                     <Card.Title>Processes</Card.Title>
                     <Table hover className="mt-2" size="sm">
                       <tbody>
-                        {cpu.ps.map((event) => (
+                        {cpu.ps.slice(0, 8).map((event) => (
                           <tr>
                             <td>{event.split(" ")[2] + " " + event.split(" ")[3].substring(0, 30)}</td>
                           </tr>
@@ -96,8 +96,14 @@ const Monitor = (props) => {
                       </tbody>
                     </Table>
                     <Card.Title>Storage</Card.Title>
-                    {cpu.vol}
-                    <ProgressBar animated now={cpu.volfree.substring(0, cpu.volfree.length - 1)} />
+                    <Card.Text>
+                      {cpu.vol}
+                      <ProgressBar animated now={cpu.volfree.substring(0, cpu.volfree.length - 1)} />
+                    </Card.Text>
+                    <Card.Text>
+                      {cpu.vol0}
+                      <ProgressBar animated now={cpu.vol0free.substring(0, cpu.vol0free.length - 1)} />
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               )}
