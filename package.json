@@ -1,9 +1,9 @@
 {
   "name": "web-g",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "author": "Giona Righini (sacconazzo)",
-  "license": "MIT"
+  "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
