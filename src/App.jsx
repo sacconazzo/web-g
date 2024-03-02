@@ -126,17 +126,17 @@ function App() {
               </NavIcon>
               <NavText>Home</NavText>
             </NavItem>
-            <NavItem eventKey="monitor">
-              <NavIcon>
-                <i className="fa fa-fw fa-tachometer" style={{ fontSize: "1.75em" }} />
-              </NavIcon>
-              <NavText>Sys Monitor</NavText>
-            </NavItem>
             <NavItem eventKey="battery">
               <NavIcon>
                 <i className="fa fa-fw fa-battery-three-quarters" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Private</NavText>
+            </NavItem>
+            <NavItem eventKey="monitor">
+              <NavIcon>
+                <i className="fa fa-fw fa-tachometer" style={{ fontSize: "1.75em" }} />
+              </NavIcon>
+              <NavText>Sys Monitor</NavText>
             </NavItem>
             <NavItem eventKey="private">
               <NavIcon>
