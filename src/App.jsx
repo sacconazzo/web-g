@@ -130,7 +130,7 @@ function App() {
               <NavIcon>
                 <i className="fa fa-fw fa-battery-three-quarters" style={{ fontSize: "1.75em" }} />
               </NavIcon>
-              <NavText>Private</NavText>
+              <NavText>Battery</NavText>
             </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
