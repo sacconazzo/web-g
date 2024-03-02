@@ -65,18 +65,24 @@ const Monitor = (props) => {
 
   const [refresh, setRefresh] = useState(0)
   useEffect(() => {
-    fetch("https://api.giona.tech/domotica/battery", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        data = json
-
-        setTimeout(() => {
-          setRefresh(refresh + 1)
-        }, 2000)
+    try {
+      fetch("https://api.giona.tech/domotica/battery", {
+        method: "GET",
+        credentials: "include",
       })
+        .then((response) => response.json())
+        .then((json) => {
+          data = json
+
+          setTimeout(() => {
+            setRefresh(refresh + 1)
+          }, 2000)
+        })
+    } catch (e) {
+      setTimeout(() => {
+        setRefresh(refresh + 1)
+      }, 2000)
+    }
   }, [refresh, props])
 
   return (

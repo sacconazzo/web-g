@@ -23,18 +23,24 @@ const Monitor = (props) => {
 
   const [refresh, setRefresh] = useState(0)
   useEffect(() => {
-    fetch("https://api.giona.tech/cpu_load", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        cpu = json
-
-        setTimeout(() => {
-          setRefresh(refresh + 1)
-        }, 2000)
+    try {
+      fetch("https://api.giona.tech/cpu_load", {
+        method: "GET",
+        credentials: "include",
       })
+        .then((response) => response.json())
+        .then((json) => {
+          cpu = json
+
+          setTimeout(() => {
+            setRefresh(refresh + 1)
+          }, 2000)
+        })
+    } catch (e) {
+      setTimeout(() => {
+        setRefresh(refresh + 1)
+      }, 2000)
+    }
   }, [refresh, props])
 
   return (
