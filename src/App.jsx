@@ -1,8 +1,12 @@
 import React, { useState } from "react"
+import {
+  useNavigate
+} from "react-router-dom";
 import "./App.css"
 import Home from "./Home.jsx"
 import Private from "./Private.jsx"
 import Monitor from "./Monitor.jsx"
+import Battery from "./Battery.jsx"
 import Login from "./Login.jsx"
 import Icon from "./assets/favicon.ico"
 import Navbar from "react-bootstrap/Navbar"
@@ -49,9 +53,12 @@ const SideNavF = styled(SideNav)`
 var auth = localStorage.getItem("auth")
 
 function App() {
-  var sel = window.location.href.split("#/")[1]
-
+  const navigate = useNavigate()
+  const path = window.location.hash
+  var sel = path.replace(/[^\w\s]/gi, '')
   sel = sel === "" || !sel ? "home" : sel
+
+  window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || "home")
 
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
@@ -107,23 +114,27 @@ function App() {
             setState(expanded)
           }}
           onSelect={(selected) => {
-            const to = "#/" + selected
-            if (view !== to) {
-              setView(selected)
-            }
+            setView(selected)
+            navigate("#" + selected)
           }}
         >
           <SideNav.Toggle />
-          <SideNav.Nav selected={view} defaultSelected={sel}>
+          <SideNav.Nav selected={view} >
             <NavItem eventKey="home">
               <NavIcon>
                 <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Home</NavText>
             </NavItem>
+            <NavItem eventKey="battery">
+              <NavIcon>
+                <i className="fa fa-fw fa-battery-three-quarters" style={{ fontSize: "1.75em" }} />
+              </NavIcon>
+              <NavText>Private</NavText>
+            </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
-                <i className="fa fa-fw fa-percent" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-tachometer" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
@@ -145,6 +156,7 @@ function App() {
         <Main expanded={expanded}>
           {view === "home" && <Home />}
           {view === "monitor" && <Monitor />}
+          {view === "battery" && <Battery />}
           {view === "private" && <Private auth={auth} />}
           {view === "login" && (
             <Login
