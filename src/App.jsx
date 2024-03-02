@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import {
-  useNavigate,
-  useLocation
+  useNavigate
 } from "react-router-dom";
 import "./App.css"
 import Home from "./Home.jsx"
@@ -55,10 +54,11 @@ var auth = localStorage.getItem("auth")
 
 function App() {
   const navigate = useNavigate()
-  var sel = useLocation().pathname.replace("/", "")
+  const path = window.location.hash
+  var sel = path.replace(/[^\w\s]/gi, '')
   sel = sel === "" || !sel ? "home" : sel
 
-  window.onpopstate = () => setView(window.location.pathname.replace("/", ""))
+  window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || "home")
 
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
@@ -114,15 +114,12 @@ function App() {
             setState(expanded)
           }}
           onSelect={(selected) => {
-            const to = "#/" + selected
-            if (view !== to) {
-              setView(selected)
-              navigate("/" + selected)
-            }
+            setView(selected)
+            navigate("#" + selected)
           }}
         >
           <SideNav.Toggle />
-          <SideNav.Nav selected={view} defaultSelected={sel}>
+          <SideNav.Nav selected={view} >
             <NavItem eventKey="home">
               <NavIcon>
                 <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
