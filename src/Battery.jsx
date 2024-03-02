@@ -20,8 +20,13 @@ const Monitor = (props) => {
     return h + ':' + m;
   }
 
-  const formatTimeShort = (value) => {
-    const options = { hours: 'short', minutes: 'numeric' }
+  const formatDate = (value) => {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    return new Date(value).toLocaleDateString(props.locale, options)
+  }
+
+  const formatDateShort = (value) => {
+    const options = { month: 'short', day: 'numeric' }
     return new Date(value).toLocaleDateString(props.locale, options)
   }
 
@@ -119,30 +124,30 @@ const Monitor = (props) => {
                 </Card>
               )}
               <p></p>
-              {data && false && (
+              {data && (
                 <Card bg="light">
                   <Card.Header as="h5">Day Week</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
-                      data={data.realtime}
+                      data={data.dayWeek}
                       margin={{
                         top: 5,
-                        right: 30,
-                        left: 20,
+                        // right: 30,
+                        // left: 20,
                         bottom: 5,
                       }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="timestamp" tickFormatter={formatTimeShort} />
-                      <YAxis yAxisId={1} dataKey="bmV"  />
-                      <YAxis yAxisId={2} dataKey="temp"  />
+                      <XAxis dataKey="day" tickFormatter={formatDateShort} />
+                      <YAxis yAxisId={1} dataKey="b2V" domain={[12.5, 14.5]} tickFormatter={formatV} />
+                      <YAxis yAxisId={2} dataKey="temp" tickFormatter={formatT} orientation='right' />
                       <Legend formatter={renderColorfulLegendText} />
-                      <Area yAxisId={2} type="monotone" dataKey="temp" stroke="#8884d8" fill="#8884d8" activeDot={{ r: 8 }} />
-                      <Area yAxisId={1} type="monotone" dataKey="bmV" stroke="#aaaaaa" fill="#cccccc" />
-                      <Line yAxisId={2} type="monotone" dataKey="rate" dot={false} stroke="#000000" />
-                      <Line yAxisId={2} type="monotone" dataKey="rate" dot={false} stroke="#000000" />
-                      <Line yAxisId={2} type="monotone" dataKey="rate" dot={false} stroke="#000000" />
+                      <Tooltip formatter={formatter} labelFormatter={formatDate}  />
+                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false}stroke="#cc0000" fill="#cc0000"/>
+                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
                   </Card.Body>
