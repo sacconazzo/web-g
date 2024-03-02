@@ -55,7 +55,7 @@ var auth = localStorage.getItem("auth")
 
 function App() {
   const navigate = useNavigate()
-  var sel = useLocation().pathname
+  var sel = useLocation().pathname.replace("/", "")
   sel = sel === "" || !sel ? "home" : sel
 
   const [view, setView] = useState(sel)
