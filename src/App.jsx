@@ -1,4 +1,8 @@
 import React, { useState } from "react"
+import {
+  useNavigate,
+  useLocation
+} from "react-router-dom";
 import "./App.css"
 import Home from "./Home.jsx"
 import Private from "./Private.jsx"
@@ -50,8 +54,8 @@ const SideNavF = styled(SideNav)`
 var auth = localStorage.getItem("auth")
 
 function App() {
-  var sel = window.location.href.split("#/")[1]
-
+  const navigate = useNavigate()
+  var sel = useLocation().pathname
   sel = sel === "" || !sel ? "home" : sel
 
   const [view, setView] = useState(sel)
@@ -111,6 +115,7 @@ function App() {
             const to = "#/" + selected
             if (view !== to) {
               setView(selected)
+              navigate("/" + selected)
             }
           }}
         >
@@ -124,7 +129,7 @@ function App() {
             </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
-                <i className="fa fa-fw fa-percent" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-tachometer" style={{ fontSize: "1.75em" }} />
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
