@@ -58,6 +58,8 @@ function App() {
   var sel = useLocation().pathname.replace("/", "")
   sel = sel === "" || !sel ? "home" : sel
 
+  window.onpopstate = () => setView(window.location.pathname.replace("/", ""))
+
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
 
