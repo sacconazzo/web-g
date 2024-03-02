@@ -55,7 +55,7 @@ const Home = () => {
               </a>
             </h4><p></p>
             <h4 className="header">
-              by your side to realize your vision
+              here my home automation dashboard
             </h4>
           </Jumbotron>
           <CardDeck className="">
