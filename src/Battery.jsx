@@ -109,10 +109,10 @@ const Monitor = (props) => {
                       <YAxis yAxisId={2} dataKey="temp" tickFormatter={formatT} orientation='right' />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
-                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false}stroke="#aaaaaa" fill="#cccccc"/>
-                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#aaaaaa" fill="#cccccc" />
-                      <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#aaaaaa" fill="#cccccc" />
-                      <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#8884d8" />
+                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false}stroke="#cc0000" fill="#cc0000"/>
+                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
                   </Card.Body>
