@@ -117,7 +117,7 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" tickFormatter={time} />
-                      <YAxis yAxisId={1} dataKey="b2V" domain={[12.5, 14.5]} tickFormatter={formatV} />
+                      <YAxis yAxisId={1} dataKey="b2V" domain={[12.5, 14]} tickFormatter={formatV} />
                       <YAxis yAxisId={2} dataKey="temp" domain={[10]} tickFormatter={formatT} orientation='right' />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
