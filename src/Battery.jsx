@@ -96,6 +96,7 @@ const Monitor = (props) => {
             <h1 className="header">
               <strong>Van Battery Monitor</strong>
             </h1>
+            {data &&<p>{data.system.uptime} ({data.system.temp} °C)</p>}
           </Jumbotron>
           {!data && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!data}>
