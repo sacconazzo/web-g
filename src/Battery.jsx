@@ -36,6 +36,12 @@ const Monitor = (props) => {
     }) + "V"
   }
 
+  const formatA = (value) => {
+    return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 1,
+    }) + "A"
+  }
+
   const formatT = (value) => {
     return value.toLocaleString(props.locale, {
       maximumFractionDigits: 0,
@@ -44,6 +50,9 @@ const Monitor = (props) => {
 
   const formatter = (value, name) => {
     if (name === 'timestamp') return value
+    if (['b1A', 'b2A'].includes(name)) return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 1,
+    }) + " A"
     return name === 'temp' ? value.toLocaleString(props.locale, {
       maximumFractionDigits: 2,
     }) + ' °C' : value.toLocaleString(props.locale, {
@@ -118,12 +127,15 @@ const Monitor = (props) => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
                       <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}  />
+                      <YAxis allowDataOverflow yAxisId={3} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-5, 5]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Line yAxisId={3} type="monotone" dataKey="b1A" dot={false} stroke="#ce7e00" />
+                      <Line yAxisId={3} type="monotone" dataKey="b2A" dot={false} stroke="#e69138" />
                       <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
