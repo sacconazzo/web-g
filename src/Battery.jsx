@@ -117,7 +117,7 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}  />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
@@ -147,7 +147,7 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="day" tickFormatter={formatDateShort} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={formatDate}  />
