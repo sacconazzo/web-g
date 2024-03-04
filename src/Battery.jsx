@@ -116,13 +116,13 @@ const Monitor = (props) => {
                       }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="timestamp" tickFormatter={time} />
-                      <YAxis yAxisId={1} dataKey="b2V" domain={[12.5, 14]} tickFormatter={formatV} />
-                      <YAxis yAxisId={2} dataKey="temp" domain={[10]} tickFormatter={formatT} orientation='right' />
+                      <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}  />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
-                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false}stroke="#cc0000" fill="#cc0000"/>
-                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
+                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
                       <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
@@ -147,12 +147,12 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="day" tickFormatter={formatDateShort} />
-                      <YAxis yAxisId={1} dataKey="b2V" domain={[12.5, 14.5]} tickFormatter={formatV} />
-                      <YAxis yAxisId={2} dataKey="temp" tickFormatter={formatT} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={formatDate}  />
-                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false}stroke="#cc0000" fill="#cc0000"/>
-                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                      <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
+                      <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
                       <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
