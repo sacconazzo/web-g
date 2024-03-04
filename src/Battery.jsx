@@ -42,6 +42,12 @@ const Monitor = (props) => {
     }) + "A"
   }
 
+  const formatAh = (value) => {
+    return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 1,
+    }) + "Ah"
+  }
+
   const formatT = (value) => {
     return value.toLocaleString(props.locale, {
       maximumFractionDigits: 0,
@@ -53,6 +59,9 @@ const Monitor = (props) => {
     if (['b1A', 'b2A'].includes(name)) return value.toLocaleString(props.locale, {
       maximumFractionDigits: 1,
     }) + " A"
+    if (['b1Ah', 'b2Ah'].includes(name)) return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 1,
+    }) + " Ah"
     return name === 'temp' ? value.toLocaleString(props.locale, {
       maximumFractionDigits: 2,
     }) + ' °C' : value.toLocaleString(props.locale, {
@@ -127,16 +136,17 @@ const Monitor = (props) => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
                       <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={3} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-5, 5]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-5, 5]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
+                      {/* <ReferenceLine y={13} yAxisId={2} label="Max" stroke="red" strokeDasharray="3 3" /> */}
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter}/>
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
-                      <Line yAxisId={3} type="monotone" dataKey="b1A" dot={false} stroke="#ce7e00" />
-                      <Line yAxisId={3} type="monotone" dataKey="b2A" dot={false} stroke="#e69138" />
-                      <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
+                      <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b1A" dot={false} stroke="#ce7e00" />
+                      <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b2A" dot={false} stroke="#e69138" />
+                      <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
                   </Card.Body>
@@ -145,7 +155,7 @@ const Monitor = (props) => {
               <p></p>
               {data && (
                 <Card bg="light">
-                  <Card.Header as="h5">Day Week</Card.Header>
+                  <Card.Header as="h5">Day Week ({data.dayWeek[data.dayWeek.length-1].temp} °C)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
@@ -160,13 +170,16 @@ const Monitor = (props) => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="day" tickFormatter={formatDateShort} />
                       <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={2} dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-100, -50, -25, 0, 25, 50, 100]} domain={[-50, 50]} dataKey="b2A" tickFormatter={formatAh} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={formatDate}  />
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
-                      <Line yAxisId={2} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
+                      <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b1Ah" dot={false} stroke="#ce7e00" />
+                      <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b2Ah" dot={false} stroke="#e69138" />
+                      <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
                   </Card.Body>
