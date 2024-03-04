@@ -135,8 +135,8 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-5, 5]} dataKey="b2A" tickFormatter={formatA}  />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-5, 5]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
                       {/* <ReferenceLine y={13} yAxisId={2} label="Max" stroke="red" strokeDasharray="3 3" /> */}
                       <Legend formatter={renderColorfulLegendText} />
@@ -169,8 +169,8 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="day" tickFormatter={formatDateShort} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-100, -50, -25, 0, 25, 50, 100]} domain={[-50, 50]} dataKey="b2A" tickFormatter={formatAh}  />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 15.5, 13.8, 14]} dataKey="b2V" domain={[12.2, 13.5]} tickFormatter={formatV} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-100, -50, -25, 0, 25, 50, 100]} domain={[-50, 50]} dataKey="b2A" tickFormatter={formatAh} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} hide stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={formatDate}  />
