@@ -83,24 +83,23 @@ const Monitor = (props) => {
 
   const [refresh, setRefresh] = useState(0)
   useEffect(() => {
-    try {
-      fetch("https://api.giona.tech/domotica/battery", {
-        method: "GET",
-        credentials: "include",
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          data = json
-
-          setTimeout(() => {
-            setRefresh(refresh + 1)
-          }, 2000)
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://api.giona.tech/domotica/battery", {
+          method: "GET",
+          credentials: "include",
         })
-    } catch (e) {
-      setTimeout(() => {
-        setRefresh(refresh + 1)
-      }, 2000)
+        data = await response.json()
+        setTimeout(() => {
+          setRefresh(refresh + 1)
+        }, 2000)
+      } catch (e) {
+        setTimeout(() => {
+          setRefresh(refresh + 1)
+        }, 2000)
+      }
     }
+    fetchData()
   }, [refresh, props])
 
   return (
@@ -162,8 +161,6 @@ const Monitor = (props) => {
                       data={data.dayWeek}
                       margin={{
                         top: 5,
-                        // right: 30,
-                        // left: 20,
                         bottom: 5,
                       }}
                     >
