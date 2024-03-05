@@ -15,9 +15,17 @@ const Monitor = (props) => {
 
   function time(date) {
     var d = new Date(date),
-      h = (d.getHours()<10?'0':'') + d.getHours(),
-      m = (d.getMinutes()<10?'0':'') + d.getMinutes();
-    return h + ':' + m;
+        h = (d.getHours()<10?'0':'') + d.getHours(),
+        m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes()
+    return h + m;
+  }
+
+  function timeS(date) {
+    var d = new Date(date),
+        h = (d.getHours()<10?'0':'') + d.getHours(),
+        m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes(),
+        s = ':' + (d.getSeconds()<10?'0':'') + d.getSeconds();
+    return h + m + s;
   }
 
   const formatDate = (value) => {
@@ -32,19 +40,19 @@ const Monitor = (props) => {
 
   const formatV = (value) => {
     return value.toLocaleString(props.locale, {
-      maximumFractionDigits: 1,
+      minimumFractionDigits: 1
     }) + "V"
   }
 
   const formatA = (value) => {
     return value.toLocaleString(props.locale, {
-      maximumFractionDigits: 1,
+      maximumFractionDigits: 0,
     }) + "A"
   }
 
   const formatAh = (value) => {
     return value.toLocaleString(props.locale, {
-      maximumFractionDigits: 1,
+      maximumFractionDigits: 0,
     }) + "Ah"
   }
 
@@ -58,13 +66,17 @@ const Monitor = (props) => {
     if (name === 'timestamp') return value
     if (['b1A', 'b2A'].includes(name)) return value.toLocaleString(props.locale, {
       maximumFractionDigits: 1,
+      minimumFractionDigits: 1,
     }) + " A"
     if (['b1Ah', 'b2Ah'].includes(name)) return value.toLocaleString(props.locale, {
       maximumFractionDigits: 1,
+      minimumFractionDigits: 1,
     }) + " Ah"
     return name === 'temp' ? value.toLocaleString(props.locale, {
+      minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }) + ' °C' : value.toLocaleString(props.locale, {
+      minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }) + " V"
   }
@@ -139,7 +151,7 @@ const Monitor = (props) => {
                       <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
                       {/* <ReferenceLine y={13} yAxisId={2} label="Max" stroke="red" strokeDasharray="3 3" /> */}
                       <Legend formatter={renderColorfulLegendText} />
-                      <Tooltip formatter={formatter}/>
+                      <Tooltip formatter={formatter} labelFormatter={timeS} />
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
@@ -170,7 +182,7 @@ const Monitor = (props) => {
                       <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-40, -20, 0, 20, 40]} domain={[-50, 50]} dataKey="b2A" tickFormatter={formatAh} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} hide stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
-                      <Tooltip formatter={formatter} labelFormatter={formatDate}  />
+                      <Tooltip formatter={formatter} labelFormatter={formatDate} />
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
