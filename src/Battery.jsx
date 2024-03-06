@@ -147,8 +147,8 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 13.8]} dataKey="b2V" domain={[12.2, 14]} tickFormatter={formatV} />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-10, -5, -2.5, 0, 2.5, 5, 10]} domain={[-15, 15]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 13.8]} dataKey="b2V" domain={[12, 14]} tickFormatter={formatV} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-20, -10, -5, 0, 5]} domain={[-30, 10]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
                       {/* <ReferenceLine y={13} yAxisId={2} label="Max" stroke="red" strokeDasharray="3 3" /> */}
                       <Legend formatter={renderColorfulLegendText} />
