@@ -125,12 +125,12 @@ const Monitor = (props) => {
             <h1 className="header">
               <strong>Van Battery Monitor</strong>
             </h1>
-            {data &&<p>{data.system.uptime} ({data.system.temp} °C)</p>}
+            {data?.system &&<p>{data.system.uptime} ({data.system.temp} °C)</p>}
           </Jumbotron>
           {!data && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!data}>
             <>
-              {data && (
+              {data?.realtime && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">Realtime ({data.realtime[data.realtime.length-1].temp} °C)</Card.Header>
                   <Card.Body>
@@ -164,7 +164,7 @@ const Monitor = (props) => {
                 </Card>
               )}
               <p></p>
-              {data && (
+              {data?.dayWeek && (
                 <Card bg="light">
                   <Card.Header as="h5">Day Week ({data.dayWeek[data.dayWeek.length-1].temp} °C)</Card.Header>
                   <Card.Body>
