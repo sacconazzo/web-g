@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card"
 import Fade from "react-bootstrap/Fade"
 // import ProgressBar from "react-bootstrap/ProgressBar"
 import Spinner from "react-bootstrap/Spinner"
+import moment from "moment"
 
 var data = null
 
@@ -25,7 +26,7 @@ const Monitor = (props) => {
         h = (d.getHours()<10?'0':'') + d.getHours(),
         m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes(),
         s = ':' + (d.getSeconds()<10?'0':'') + d.getSeconds();
-    return h + m + s;
+    return `${moment(date).fromNow()} (${h}${m}${s})`;
   }
 
   const formatDate = (value) => {
