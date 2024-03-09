@@ -9,7 +9,9 @@ import Fade from "react-bootstrap/Fade"
 import Spinner from "react-bootstrap/Spinner"
 import moment from "moment"
 
-var data = null
+let data = null
+let last = {}
+let today = {}
 
 const Monitor = (props) => {
   const [loaded, setLoaded] = useState(false)
@@ -41,7 +43,8 @@ const Monitor = (props) => {
 
   const formatV = (value) => {
     return value.toLocaleString(props.locale, {
-      minimumFractionDigits: 1
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
     }) + "V"
   }
 
@@ -102,7 +105,11 @@ const Monitor = (props) => {
           method: "GET",
           credentials: "include",
         })
+
         data = await response.json()
+        last = data.realtime[data.realtime.length - 1]
+        today = data.dayWeek[data.dayWeek.length - 1]
+
         setTimeout(() => {
           setRefresh(refresh + 1)
         }, 2000)
@@ -133,7 +140,7 @@ const Monitor = (props) => {
             <>
               {data?.realtime && (
                 <Card bg="" text="dark">
-                  <Card.Header as="h5">Realtime ({data.realtime[data.realtime.length-1].temp} °C)</Card.Header>
+                  <Card.Header as="h5">Realtime {formatA(last.b1A + last.b2A)} ({data.realtime[data.realtime.length-1].temp} °C)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
@@ -147,8 +154,8 @@ const Monitor = (props) => {
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
-                      <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 13.8]} dataKey="b2V" domain={[12, 14]} tickFormatter={formatV} />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-20, -10, -5, 0, 5]} domain={[-30, 10]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={1} ticks={[last.bmV, (last.b2V + last.b1V) / 2]} dataKey="b2V" domain={[12, 14]} tickFormatter={formatV} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[(last.b1A + last.b2A) / 2]} domain={[-30, 10]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
                       <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                       <Legend formatter={renderColorfulLegendText} />
@@ -167,7 +174,7 @@ const Monitor = (props) => {
               <p></p>
               {data?.dayWeek && (
                 <Card bg="light">
-                  <Card.Header as="h5">Day Week ({data.dayWeek[data.dayWeek.length-1].temp} °C)</Card.Header>
+                  <Card.Header as="h5">Day Week {formatAh(today.b1Ah + today.b2Ah)} ({Math.round((today.b1Ah + today.b2Ah) / 2)}%)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
