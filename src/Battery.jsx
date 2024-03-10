@@ -31,9 +31,11 @@ const Monitor = (props) => {
     return `${moment(date).fromNow()} (${h}${m}${s})`;
   }
 
+  const round = (v) => Math.round(v) > 0 ? `+${Math.round(v)}` : `${Math.round(v)}`
+
   const formatDate = (value, values) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    const perc = values.length ? ` (${Math.round((values[0].payload.b1Ah + values[0].payload.b2Ah) / 2)}%)` : ''
+    const perc = values.length ? ` (${round((values[0].payload.b1Ah + values[0].payload.b2Ah) / 2)}%)` : ''
     return new Date(value).toLocaleDateString(props.locale, options) + perc
   }
 
@@ -52,12 +54,14 @@ const Monitor = (props) => {
   const formatA = (value) => {
     return value.toLocaleString(props.locale, {
       maximumFractionDigits: 0,
+      signDisplay: 'always'
     }) + "A"
   }
 
   const formatAh = (value) => {
     return value.toLocaleString(props.locale, {
       maximumFractionDigits: 0,
+      signDisplay: 'always'
     }) + "Ah"
   }
 
@@ -72,10 +76,12 @@ const Monitor = (props) => {
     if (['b1A', 'b2A'].includes(name)) return value.toLocaleString(props.locale, {
       maximumFractionDigits: 1,
       minimumFractionDigits: 1,
+      signDisplay: 'always'
     }) + " A"
     if (['b1Ah', 'b2Ah'].includes(name)) return value.toLocaleString(props.locale, {
       maximumFractionDigits: 1,
       minimumFractionDigits: 1,
+      signDisplay: 'always'
     }) + " Ah"
     return name === 'temp' ? value.toLocaleString(props.locale, {
       minimumFractionDigits: 2,
@@ -175,7 +181,7 @@ const Monitor = (props) => {
               <p></p>
               {data?.dayWeek && (
                 <Card bg="light">
-                  <Card.Header as="h5">Day Week {formatAh(today.b1Ah + today.b2Ah)} ({Math.round((today.b1Ah + today.b2Ah) / 2)}%)</Card.Header>
+                  <Card.Header as="h5">Day Week {formatAh(today.b1Ah + today.b2Ah)} ({round((today.b1Ah + today.b2Ah) / 2)}%)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
