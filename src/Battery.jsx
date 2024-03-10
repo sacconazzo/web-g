@@ -17,23 +17,24 @@ const Monitor = (props) => {
   const [loaded, setLoaded] = useState(false)
 
   function time(date) {
-    var d = new Date(date),
+    const d = new Date(date),
         h = (d.getHours()<10?'0':'') + d.getHours(),
         m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes()
     return h + m;
   }
 
   function timeS(date) {
-    var d = new Date(date),
+    const d = new Date(date),
         h = (d.getHours()<10?'0':'') + d.getHours(),
         m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes(),
         s = ':' + (d.getSeconds()<10?'0':'') + d.getSeconds();
     return `${moment(date).fromNow()} (${h}${m}${s})`;
   }
 
-  const formatDate = (value) => {
+  const formatDate = (value, values) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    return new Date(value).toLocaleDateString(props.locale, options)
+    const perc = values.length ? ` (${Math.round((values[0].payload.b1Ah + values[0].payload.b2Ah) / 2)}%)` : ''
+    return new Date(value).toLocaleDateString(props.locale, options) + perc
   }
 
   const formatDateShort = (value) => {
