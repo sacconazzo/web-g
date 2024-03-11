@@ -194,7 +194,7 @@ const Monitor = (props) => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="day" tickFormatter={formatDateShort} />
                       <YAxis allowDataOverflow yAxisId={1} ticks={[12.5, 13, 13.3, 13.8]} dataKey="b2V" domain={[12.2, 14]} tickFormatter={formatV} />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-40, -20, 0, 20, 40]} domain={[-50, 50]} dataKey="b2A" tickFormatter={formatAh} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[-50, -25, 0, 25, 50]} domain={[-70, 70]} dataKey="b2A" tickFormatter={formatAh} orientation='right' />
                       <YAxis allowDataOverflow yAxisId={3} hide stroke="#6aa84f" dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT}/>
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={formatDate} />
@@ -202,8 +202,8 @@ const Monitor = (props) => {
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
-                      <Bar yAxisId={2} dataKey="b1Ah" fill="#ce7e00" activeBar={<Rectangle fill="#f6b26b" stroke="#ce7e00" />} />
-                      <Bar yAxisId={2} dataKey="b2Ah" fill="#e69138" activeBar={<Rectangle fill="#ffd966" stroke="#e69138" />} />
+                      <Bar yAxisId={2} stackId={1} dataKey="b1Ah" fill="#ce7e00" activeBar={<Rectangle fill="#f6b26b" stroke="#ce7e00" />} />
+                      <Bar yAxisId={2} stackId={1} dataKey="b2Ah" fill="#e69138" activeBar={<Rectangle fill="#ffd966" stroke="#e69138" />} />
                       <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                     </ComposedChart>
                   </ResponsiveContainer>
