@@ -27,8 +27,8 @@ const ToastSys = (props) => {
         </Toast.Header>
         <Toast.Body>
           Grazie della visita! In alto troverai i link al{" "}
-          <strong>sito web</strong>, al <strong>profilo linkedin</strong> e al{" "}
-          <strong>portfolio pubblico su GitHub</strong>. A tua disposizione per ogni informazione.
+          <strong>sito web</strong>, al profilo <strong>linkedin</strong> e {" "}
+          <strong>GitHub</strong>. A tua disposizione per ogni informazione.
         </Toast.Body>
       </Toast>
       <Toast className="m-3" onClose={() => props.messageokok()} show={props.messageok} delay={3000} autohide>

@@ -49,32 +49,26 @@ const Home = () => {
               <TitleAnim texts={['Hi,', 'traveler!']} />
             </h1>
             <h4 className="header">
-              here is Giona, I'm a full-stack engineer at{' '}
-              <a href="https://hnrg.it" target="_blank" rel="noopener noreferrer">
-                AlteaFED
-              </a>
-            </h4><p></p>
-            <h4 className="header">
-              here my home automation dashboard
+              here an automation dashboard based on real data
             </h4>
           </Jumbotron>
           <CardDeck className="">
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>SAP ERP & SAP Fiori Cert. Tech Expert</Card.Title>
+                <Card.Title>SAP ERP & SAP Fiori Cert. Tech expert</Card.Title>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>React & HTML5 for Web & Mob apps</Card.Title>
+                <Card.Title>Tech. leader nodeJS & web3</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>SQL / noSQL nodeJS & Web3 back-end</Card.Title>
+                <Card.Title>React for Web & Mob apps</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
