@@ -53,16 +53,16 @@ const Home = () => {
             </h4>
           </Jumbotron>
           <CardDeck className="">
-            <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
-              <Card.Body>
-                <Card.Title>SAP ERP & SAP Fiori Cert. Tech expert</Card.Title>
-              </Card.Body>
-            </Card>
-
-            <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
+          <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
                 <Card.Title>Tech. leader nodeJS & web3</Card.Title>
                 <Card.Text></Card.Text>
+              </Card.Body>
+            </Card>
+            
+            <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
+              <Card.Body>
+                <Card.Title>SAP ERP & SAP Fiori Cert. Tech expert</Card.Title>
               </Card.Body>
             </Card>
 
