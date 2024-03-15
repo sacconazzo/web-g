@@ -55,7 +55,7 @@ const Home = () => {
           <CardDeck className="">
           <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Tech. leader nodeJS & web3</Card.Title>
+                <Card.Title>Tech. Leader NodeJS & Web3</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
@@ -68,7 +68,7 @@ const Home = () => {
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>React for Web & Mob apps</Card.Title>
+                <Card.Title>ReactJS for Web & Mob apps</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
