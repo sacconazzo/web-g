@@ -54,10 +54,10 @@ const Monitor = (props) => {
               <strong>g NAS</strong> e <strong>SCN Router</strong>
             </h1>
           </Jumbotron>
-          {!cpu && <Spinner className="ml-3" animation="grow" />}
+          {!cpu?.scnuptime && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!cpu}>
             <CardDeck>
-              {cpu && (
+              {cpu?.scnuptime && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">SCN</Card.Header>
                   <Card.Body>
@@ -85,7 +85,7 @@ const Monitor = (props) => {
                   </Card.Body>
                 </Card>
               )}
-              {cpu && (
+              {cpu?.uptime && (
                 <Card bg="light">
                   <Card.Header as="h5">g</Card.Header>
                   <Card.Body>

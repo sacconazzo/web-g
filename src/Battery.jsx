@@ -108,10 +108,7 @@ const Monitor = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://api.giona.tech/domotica/battery", {
-          method: "GET",
-          credentials: "include",
-        })
+        const response = await fetch("https://api.giona.tech/domotica/battery")
 
         data = await response.json()
         last = data.realtime[data.realtime.length - 1]
