@@ -161,8 +161,8 @@ const Monitor = (props) => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
                       <YAxis allowDataOverflow yAxisId={1} ticks={[last.bmV, (last.b2V + last.b1V) / 2]} dataKey="b2V" domain={[12, 14.5]} tickFormatter={formatV} />
-                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[(last.b1A + last.b2A) / 2]} domain={[-30, 10]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
-                      <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[10, 'auto']} tickFormatter={formatT} />
+                      <YAxis allowDataOverflow yAxisId={2} stroke="#ce7e00" ticks={[(last.b1A + last.b2A) / 2]} domain={[-35, 15]} dataKey="b2A" tickFormatter={formatA} orientation='right' />
+                      <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[5, 'auto']} tickFormatter={formatT} />
                       <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                       <Legend formatter={renderColorfulLegendText} />
                       <Tooltip formatter={formatter} labelFormatter={timeS} />
