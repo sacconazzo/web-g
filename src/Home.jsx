@@ -28,7 +28,7 @@ const Home = () => {
     if (!content) {
       setTimeout(() => {
         setContent(
-          '<p><strong>Write and send me a direct message here...</strong></p><p>...do not forget your reference so that I can get back to you!</p>'
+          '<p><strong>Write and send me a direct message here...</strong></p><p>...I will get back to you as soon as possible!</p>'
         )
       }, 5000)
     }
@@ -55,27 +55,27 @@ const Home = () => {
           <CardDeck className="">
           <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Tech. Leader NodeJS & Web3</Card.Title>
+                <Card.Title>Collecting analog data</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
             
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>SAP ERP & SAP Fiori Cert. Tech expert</Card.Title>
+                <Card.Title>Operating system analysis</Card.Title>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>ReactJS for Web & Mob apps</Card.Title>
+                <Card.Title>Server and integrations on cloud</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Java Android Developer</Card.Title>
+                <Card.Title>Trading Bot</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>

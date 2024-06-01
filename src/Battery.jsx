@@ -165,7 +165,7 @@ const Monitor = (props) => {
                       <YAxis allowDataOverflow yAxisId={3} stroke="#6aa84f" hide dataKey="temp" domain={[5, 'auto']} tickFormatter={formatT} />
                       <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                       <Legend formatter={renderColorfulLegendText} />
-                      <Tooltip formatter={formatter} labelFormatter={timeS} />
+                      <Tooltip formatter={formatter} labelFormatter={timeS} fill='transparent' />
                       <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000"/>
                       <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                       <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />

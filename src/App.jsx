@@ -7,6 +7,7 @@ import Home from "./Home.jsx"
 import Private from "./Private.jsx"
 import Monitor from "./Monitor.jsx"
 import Battery from "./Battery.jsx"
+import Balance from "./Balance.jsx"
 import Login from "./Login.jsx"
 import Icon from "./assets/favicon.ico"
 import Navbar from "react-bootstrap/Navbar"
@@ -138,6 +139,12 @@ function App() {
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
+            <NavItem eventKey="balance">
+              <NavIcon>
+                <i className="fa fa-fw fa-line-chart" style={{ fontSize: "1.75em" }} />
+              </NavIcon>
+              <NavText>Balance</NavText>
+            </NavItem>
             <NavItem eventKey="private">
               <NavIcon>
                 <i className="fa fa-fw fa-sign-in" style={{ fontSize: "1.75em" }} />
@@ -157,6 +164,7 @@ function App() {
           {view === "home" && <Home />}
           {view === "monitor" && <Monitor />}
           {view === "battery" && <Battery />}
+          {view === "balance" && <Balance />}
           {view === "private" && <Private auth={auth} />}
           {view === "login" && (
             <Login
