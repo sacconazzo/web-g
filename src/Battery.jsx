@@ -23,20 +23,22 @@ const Monitor = (props) => {
     return h + m;
   }
 
-  function timeS(date) {
+  function timeS(date, values) {
+    const w = values.length ? ` ${formatW((values[0].payload.b1A * values[0].payload.b1V) + (values[0].payload.b2A * values[0].payload.b2V))}` : ''
     const d = new Date(date),
         h = (d.getHours()<10?'0':'') + d.getHours(),
         m = ':' + (d.getMinutes()<10?'0':'') + d.getMinutes(),
         s = ':' + (d.getSeconds()<10?'0':'') + d.getSeconds();
-    return `${moment(date).fromNow()} (${h}${m}${s})`;
+    return `${moment(date).fromNow()}${w} (${h}${m}${s})`;
   }
 
   const round = (v) => Math.round(v) > 0 ? `+${Math.round(v)}` : `${Math.round(v)}`
 
   const formatDate = (value, values) => {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    const options = { weekday: 'long' }
     const perc = values.length ? ` (${round((values[0].payload.b1Ah + values[0].payload.b2Ah) / 2)}%)` : ''
-    return new Date(value).toLocaleDateString(props.locale, options) + perc
+    const wh = values.length ? ` ${formatW((values[0].payload.b1Wh + values[0].payload.b2Wh))}` : ''
+    return new Date(value).toLocaleDateString(props.locale, options) + wh + perc
   }
 
   const formatDateShort = (value) => {
@@ -58,11 +60,25 @@ const Monitor = (props) => {
     }) + "A"
   }
 
+  const formatW = (value) => {
+    return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 0,
+      signDisplay: 'always'
+    }) + "W"
+  }
+
   const formatAh = (value) => {
     return value.toLocaleString(props.locale, {
       maximumFractionDigits: 0,
       signDisplay: 'always'
     }) + "Ah"
+  }
+
+  const formatWh = (value) => {
+    return value.toLocaleString(props.locale, {
+      maximumFractionDigits: 0,
+      signDisplay: 'always'
+    }) + "Wh"
   }
 
   const formatT = (value) => {
@@ -146,7 +162,7 @@ const Monitor = (props) => {
             <>
               {data?.realtime && (
                 <Card bg="" text="dark">
-                  <Card.Header as="h5">Realtime {formatA(last.b1A + last.b2A)} ({data.realtime[data.realtime.length-1].temp} °C)</Card.Header>
+                  <Card.Header as="h5">Realtime {formatW((last.b1A * last.b1V) + (last.b2A * last.b2V))} ({data.realtime[data.realtime.length-1].temp} °C)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
@@ -180,7 +196,7 @@ const Monitor = (props) => {
               <p></p>
               {data?.dayWeek && (
                 <Card bg="light">
-                  <Card.Header as="h5">Day Week {formatAh(today.b1Ah + today.b2Ah)} ({round((today.b1Ah + today.b2Ah) / 2)}%)</Card.Header>
+                  <Card.Header as="h5">Day Week {formatWh(today.b1Wh + today.b2Wh)} ({round((today.b1Ah + today.b2Ah) / 2)}%)</Card.Header>
                   <Card.Body>
                   <ResponsiveContainer width={'100%'} height={300}>
                     <ComposedChart
