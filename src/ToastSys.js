@@ -20,13 +20,13 @@ const ToastSys = (props) => {
         width: '300px',
       }}
     >
-      <Toast className="m-3 d-none d-lg-block" show={loadedExt === 1} onClose={() => setShowExt(2)}>
+      {/* <Toast className="m-3 d-none d-lg-block" show={loadedExt === 1} onClose={() => setShowExt(2)}>
         <Toast.Header>
           <strong className="mr-auto">Giusto</strong>
           <small className="mr-auto">un saluto</small>
         </Toast.Header>
         <Toast.Body>Grazie della visita! Sarà un piacere scambiare due chiacchiere personalmente</Toast.Body>
-      </Toast>
+      </Toast> */}
       <Toast className="m-3" onClose={() => props.messageokok()} show={props.messageok} delay={3000} autohide>
         <Toast.Header>
           <strong className="mr-auto">Thank you!</strong>

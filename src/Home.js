@@ -28,7 +28,7 @@ const Home = () => {
     if (!content) {
       setTimeout(() => {
         setContent(
-          '<p><strong>Write and send me a direct message here...</strong></p><p>...I will get back to you as soon as possible!</p>'
+          '<p><strong>If you want write a direct message here...</strong></p><p>...there is much more than this behind it!</p>'
         )
       }, 5000)
     }
@@ -46,9 +46,9 @@ const Home = () => {
         <Container className="p-3 text-center">
           <Jumbotron style={{ minWidth: '12rem' }}>
             <h1 className="header">
-              <TitleAnim texts={['Hi,', 'traveler!']} />
+              <TitleAnim texts={['sacconazzo', 'ref.page']} />
             </h1>
-            <h4 className="header">here an automation dashboard based on real data</h4>
+            <h4 className="header">a demo automation dashboard based on real data</h4>
           </Jumbotron>
           <CardDeck className="">
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
