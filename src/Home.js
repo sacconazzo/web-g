@@ -53,27 +53,27 @@ const Home = () => {
           <CardDeck className="">
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Collecting analog data</Card.Title>
+                <Card.Title>Analog data collection and system data analysis</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Operating system analysis</Card.Title>
+                <Card.Title>Chatbots, AI APIs and cloud integrations</Card.Title>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Server and integrations on cloud</Card.Title>
+                <Card.Title>Dapp, smartcontracts and web3 nodes</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
 
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
-                <Card.Title>Trading Bot</Card.Title>
+                <Card.Title>Trading bot and budget manager</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
