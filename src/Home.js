@@ -6,10 +6,10 @@ import Navbar from 'react-bootstrap/Navbar'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 import Fade from 'react-bootstrap/Fade'
-import TitleAnim from './TitleAnim.jsx'
-import ToastSys from './ToastSys.jsx'
+import TitleAnim from './TitleAnim'
+import ToastSys from './ToastSys'
 import Modal from 'react-bootstrap/Modal'
-import Editor from './Editor.jsx'
+import Editor from './Editor'
 import Button from 'react-bootstrap/Button'
 
 var msg
@@ -48,18 +48,16 @@ const Home = () => {
             <h1 className="header">
               <TitleAnim texts={['Hi,', 'traveler!']} />
             </h1>
-            <h4 className="header">
-              here an automation dashboard based on real data
-            </h4>
+            <h4 className="header">here an automation dashboard based on real data</h4>
           </Jumbotron>
           <CardDeck className="">
-          <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
+            <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
                 <Card.Title>Collecting analog data</Card.Title>
                 <Card.Text></Card.Text>
               </Card.Body>
             </Card>
-            
+
             <Card bg="light" border="info" style={{ minWidth: '12rem' }} className="text-center">
               <Card.Body>
                 <Card.Title>Operating system analysis</Card.Title>

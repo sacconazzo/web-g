@@ -1,26 +1,24 @@
-import React, { useState } from "react"
-import {
-  useNavigate
-} from "react-router-dom";
-import "./App.css"
-import Home from "./Home.jsx"
-import Private from "./Private.jsx"
-import Monitor from "./Monitor.jsx"
-import Battery from "./Battery.jsx"
-import Balance from "./Balance.jsx"
-import Login from "./Login.jsx"
-import Icon from "./assets/favicon.ico"
-import Navbar from "react-bootstrap/Navbar"
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
-import Image from "react-bootstrap/Image"
-import OverlayTrigger from "react-bootstrap/OverlayTrigger"
-import Tooltip from "react-bootstrap/Tooltip"
-import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav"
-import TitleAnim from "./TitleAnim.jsx"
-import "@trendmicro/react-sidenav/dist/react-sidenav.css"
-import "font-awesome/css/font-awesome.min.css"
-import styled from "styled-components"
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './App.css'
+import Home from './Home'
+import Private from './Private'
+import Monitor from './Monitor'
+import Battery from './Battery'
+import Balance from './Balance'
+import Login from './Login'
+import Icon from './assets/favicon.ico'
+import Navbar from 'react-bootstrap/Navbar'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Image from 'react-bootstrap/Image'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav'
+import TitleAnim from './TitleAnim'
+import '@trendmicro/react-sidenav/dist/react-sidenav.css'
+import 'font-awesome/css/font-awesome.min.css'
+import styled from 'styled-components'
 
 const Main = styled.main`
   position: relative;
@@ -51,15 +49,15 @@ const SideNavF = styled(SideNav)`
   background: #34558b;
 `
 
-var auth = localStorage.getItem("auth")
+var auth = localStorage.getItem('auth')
 
 function App() {
   const navigate = useNavigate()
   const path = window.location.hash
   var sel = path.replace(/[^\w\s]/gi, '')
-  sel = sel === "" || !sel ? "home" : sel
+  sel = sel === '' || !sel ? 'home' : sel
 
-  window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || "home")
+  window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || 'home')
 
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
@@ -73,9 +71,9 @@ function App() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text className="px-2">
-              @{" "}
+              @{' '}
               <a href="https://giona.tech" target="_blank" rel="noopener noreferrer">
-                <TitleAnim static texts={["giona.tech"]} />
+                <TitleAnim static texts={['giona.tech']} />
               </a>
             </Navbar.Text>
           </Navbar.Collapse>
@@ -91,7 +89,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fa fa-fw fa-linkedin" style={{ fontSize: "1.25em" }}></i>
+                <i className="fa fa-fw fa-linkedin" style={{ fontSize: '1.25em' }}></i>
               </Button>
             </OverlayTrigger>
             <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">github.com/sacconazzo</Tooltip>}>
@@ -102,7 +100,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fa fa-fw fa-github" style={{ fontSize: "1.25em" }}></i>
+                <i className="fa fa-fw fa-github" style={{ fontSize: '1.25em' }}></i>
               </Button>
             </OverlayTrigger>
           </Form>
@@ -116,65 +114,65 @@ function App() {
           }}
           onSelect={(selected) => {
             setView(selected)
-            navigate("#" + selected)
+            navigate('#' + selected)
           }}
         >
           <SideNav.Toggle />
-          <SideNav.Nav selected={view} >
+          <SideNav.Nav selected={view}>
             <NavItem eventKey="home">
               <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Home</NavText>
             </NavItem>
             <NavItem eventKey="battery">
               <NavIcon>
-                <i className="fa fa-fw fa-battery-three-quarters" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-battery-three-quarters" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Battery</NavText>
             </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
-                <i className="fa fa-fw fa-tachometer" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-tachometer" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
             <NavItem eventKey="balance">
               <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Balance</NavText>
             </NavItem>
             <NavItem eventKey="private">
               <NavIcon>
-                <i className="fa fa-fw fa-sign-in" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-sign-in" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Private</NavText>
             </NavItem>
             <Separator />
             <NavItem eventKey="login">
               <NavIcon>
-                <i className="fa fa-fw fa-cogs" style={{ fontSize: "1.75em" }} />
+                <i className="fa fa-fw fa-cogs" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Keys</NavText>
             </NavItem>
           </SideNav.Nav>
         </SideNavF>
         <Main expanded={expanded}>
-          {view === "home" && <Home />}
-          {view === "monitor" && <Monitor />}
-          {view === "battery" && <Battery />}
-          {view === "balance" && <Balance />}
-          {view === "private" && <Private auth={auth} />}
-          {view === "login" && (
+          {view === 'home' && <Home />}
+          {view === 'monitor' && <Monitor />}
+          {view === 'battery' && <Battery />}
+          {view === 'balance' && <Balance />}
+          {view === 'private' && <Private auth={auth} />}
+          {view === 'login' && (
             <Login
               close={() => {
-                setView("home")
+                setView('home')
               }}
               logged={(_auth) => {
                 auth = _auth
-                localStorage.setItem("auth", auth)
-                setView("home")
+                localStorage.setItem('auth', auth)
+                setView('home')
               }}
             />
           )}

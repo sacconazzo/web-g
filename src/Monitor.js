@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 
-import Jumbotron from "react-bootstrap/Jumbotron"
-import Container from "react-bootstrap/Container"
-import Navbar from "react-bootstrap/Navbar"
-import CardDeck from "react-bootstrap/CardDeck"
-import Card from "react-bootstrap/Card"
-import Fade from "react-bootstrap/Fade"
-import Table from "react-bootstrap/Table"
-import ProgressBar from "react-bootstrap/ProgressBar"
-import Spinner from "react-bootstrap/Spinner"
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import CardDeck from 'react-bootstrap/CardDeck'
+import Card from 'react-bootstrap/Card'
+import Fade from 'react-bootstrap/Fade'
+import Table from 'react-bootstrap/Table'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import Spinner from 'react-bootstrap/Spinner'
 
 var cpu = null
 
@@ -25,9 +25,9 @@ const Monitor = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://api.giona.tech/cpu_load", {
-          method: "GET",
-          credentials: "include",
+        const response = await fetch('https://api.giona.tech/cpu_load', {
+          method: 'GET',
+          credentials: 'include',
         })
         cpu = await response.json()
         setTimeout(() => {
@@ -67,7 +67,7 @@ const Monitor = (props) => {
                       <tbody>
                         {cpu.scnps.map((event) => (
                           <tr>
-                            <td>{event.split(" ")[2] + " " + event.split(" ")[3].substring(0, 30)}</td>
+                            <td>{event.split(' ')[2] + ' ' + event.split(' ')[3].substring(0, 30)}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -77,7 +77,7 @@ const Monitor = (props) => {
                       <tbody>
                         {cpu.scnuser.map((event) => (
                           <tr>
-                            <td>{event.split(" ")[0] + " " + event.split(" ")[1]} </td>
+                            <td>{event.split(' ')[0] + ' ' + event.split(' ')[1]} </td>
                           </tr>
                         ))}
                       </tbody>
@@ -95,7 +95,7 @@ const Monitor = (props) => {
                       <tbody>
                         {cpu.ps.slice(0, 8).map((event) => (
                           <tr>
-                            <td>{event.split(" ")[2] + " " + event.split(" ")[3].substring(0, 30)}</td>
+                            <td>{event.split(' ')[2] + ' ' + event.split(' ')[3].substring(0, 30)}</td>
                           </tr>
                         ))}
                       </tbody>

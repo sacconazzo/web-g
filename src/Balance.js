@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed"
-import Navbar from "react-bootstrap/Navbar"
-import Fade from "react-bootstrap/Fade"
+import React, { useState, useEffect } from 'react'
+import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed'
+import Navbar from 'react-bootstrap/Navbar'
+import Fade from 'react-bootstrap/Fade'
 
 const Balance = () => {
   const [loaded, setLoaded] = useState(false)
-  
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true)
