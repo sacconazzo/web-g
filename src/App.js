@@ -5,6 +5,7 @@ import Home from './Home'
 import Private from './Private'
 import Monitor from './Monitor'
 import Battery from './Battery'
+import DailyNotes from './DailyNotes'
 import Sballot from './Sballot'
 import Balance from './Balance'
 import Login from './Login'
@@ -138,6 +139,12 @@ function App() {
               </NavIcon>
               <NavText>Sys Monitor</NavText>
             </NavItem>
+            <NavItem eventKey="dailynotes">
+              <NavIcon>
+                <i className="fa fa-fw fa fa-calendar" style={{ fontSize: '1.75em' }} />
+              </NavIcon>
+              <NavText>Daily Notes</NavText>
+            </NavItem>
             <NavItem eventKey="quorum">
               <NavIcon>
                 <i className="fa fa-fw fa fa-link" style={{ fontSize: '1.75em' }} />
@@ -169,6 +176,7 @@ function App() {
           {view === 'home' && <Home />}
           {view === 'monitor' && <Monitor />}
           {view === 'battery' && <Battery />}
+          {view === 'dailynotes' && <DailyNotes />}
           {view === 'quorum' && <Sballot />}
           {view === 'balance' && <Balance />}
           {view === 'private' && <Private auth={auth} />}
