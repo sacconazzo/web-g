@@ -7,6 +7,7 @@ import Monitor from './Monitor'
 import Battery from './Battery'
 import DailyNotes from './DailyNotes'
 import Sballot from './Sballot'
+import Dapp from './Dapp'
 import Balance from './Balance'
 import Login from './Login'
 import Icon from './assets/favicon.ico'
@@ -149,7 +150,13 @@ function App() {
               <NavIcon>
                 <i className="fa fa-fw fa fa-link" style={{ fontSize: '1.75em' }} />
               </NavIcon>
-              <NavText>Quorum</NavText>
+              <NavText>Web3 Node</NavText>
+            </NavItem>
+            <NavItem eventKey="dapp">
+              <NavIcon>
+                <i className="fa fa-fw fa fa-btc" style={{ fontSize: '1.75em' }} />
+              </NavIcon>
+              <NavText>DeFi DApp</NavText>
             </NavItem>
             <NavItem eventKey="balance">
               <NavIcon>
@@ -178,6 +185,7 @@ function App() {
           {view === 'battery' && <Battery />}
           {view === 'dailynotes' && <DailyNotes />}
           {view === 'quorum' && <Sballot />}
+          {view === 'dapp' && <Dapp />}
           {view === 'balance' && <Balance />}
           {view === 'private' && <Private auth={auth} />}
           {view === 'login' && (
