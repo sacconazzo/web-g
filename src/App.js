@@ -50,7 +50,7 @@ const Separator = styled.div`
 const getSideColor = (view) => {
   if (view === 'dapp') return '#30344c'
   if (view === 'quorum') return '#3f52b5'
-  if (view === 'dailynotes') return '#d25d54'
+  if (view === 'dailynotes') return '#C03D33'
   if (view === 'balance') return '#6d75b6'
   return '#34558b'
 }
