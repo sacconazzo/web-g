@@ -48,11 +48,46 @@ const Separator = styled.div`
   height: 1px;
 `
 const getSideColor = (view) => {
-  if (view === 'dapp') return '#30344c'
-  if (view === 'quorum') return '#3f52b5'
-  if (view === 'dailynotes') return '#C03D33'
-  if (view === 'balance') return '#6d75b6'
-  return '#34558b'
+  return views[view].color
+}
+
+const views = {
+  home: {
+    color: '#34558b',
+    title: 'sacconazzo',
+  },
+  monitor: {
+    color: '#34558b',
+    title: 'System Monitor',
+  },
+  battery: {
+    color: '#34558b',
+    title: 'Battery Monitor',
+  },
+  dailynotes: {
+    color: '#C03D33',
+    title: 'DailyNotes',
+  },
+  quorum: {
+    color: '#3f52b5',
+    title: 'Quorum Web3 node',
+  },
+  dapp: {
+    color: '#2e3748',
+    title: 'DeFi DApp',
+  },
+  balance: {
+    color: '#6d75b6',
+    title: 'Balance',
+  },
+  private: {
+    color: '#34558b',
+    title: 'sacconazzo - private',
+  },
+  login: {
+    color: '#34558b',
+    title: 'sacconazzo - setup',
+  },
 }
 
 var auth = localStorage.getItem('auth')
@@ -67,6 +102,12 @@ function App() {
 
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
+
+  document.title = views[view].title
+  const handleSetView = (view) => {
+    document.title = views[view].title
+    setView(view)
+  }
 
   const SideNavF = styled(SideNav)`
     background: ${getSideColor(view)};
@@ -123,7 +164,7 @@ function App() {
             setState(expanded)
           }}
           onSelect={(selected) => {
-            setView(selected)
+            handleSetView(selected)
             navigate('#' + selected)
           }}
         >
@@ -198,12 +239,12 @@ function App() {
           {view === 'login' && (
             <Login
               close={() => {
-                setView('home')
+                handleSetView('home')
               }}
               logged={(_auth) => {
                 auth = _auth
                 localStorage.setItem('auth', auth)
-                setView('home')
+                handleSetView('home')
               }}
             />
           )}

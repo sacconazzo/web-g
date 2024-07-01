@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
 import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed'
 import Fade from 'react-bootstrap/Fade'
 
