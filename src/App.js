@@ -47,10 +47,13 @@ const Separator = styled.div`
   background-color: #f9dcdd;
   height: 1px;
 `
-
-const SideNavF = styled(SideNav)`
-  background: #34558b;
-`
+const getSideColor = (view) => {
+  if (view === 'dapp') return '#30344c'
+  if (view === 'quorum') return '#3f52b5'
+  if (view === 'dailynotes') return '#d25d54'
+  if (view === 'balance') return '#6d75b6'
+  return '#34558b'
+}
 
 var auth = localStorage.getItem('auth')
 
@@ -64,6 +67,10 @@ function App() {
 
   const [view, setView] = useState(sel)
   const [expanded, setState] = useState(false)
+
+  const SideNavF = styled(SideNav)`
+    background: ${getSideColor(view)};
+  `
 
   return (
     <>

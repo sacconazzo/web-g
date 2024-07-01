@@ -14,11 +14,8 @@ const Balance = () => {
 
   return (
     <div>
-      <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
-        <Navbar.Brand>Decentralized App</Navbar.Brand>
-      </Navbar>
       <Fade in={loaded}>
-        <ResponsiveEmbed style={{ width: '100%', height: ' calc(100vh - 169px)' }}>
+        <ResponsiveEmbed style={{ width: '100%', height: ' calc(100vh - 113px)' }}>
           <embed src="https://20percent.giona.tech" />
         </ResponsiveEmbed>
       </Fade>
