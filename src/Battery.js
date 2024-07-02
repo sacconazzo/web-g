@@ -80,7 +80,9 @@ const Monitor = (props) => {
 
   const formatW = (value) => formatFlatNumber(value) + 'W'
 
-  const formatAh = (value) => formatFlatNumber(value) + 'Ah'
+  // const formatAh = (value) => formatFlatNumber(value) + 'Ah'
+
+  const formatP = (value) => formatFlatNumber(value / 2) + '%'
 
   const formatWh = (value) => formatFlatNumber(value) + 'Wh'
 
@@ -257,7 +259,7 @@ const Monitor = (props) => {
                         <YAxis
                           allowDataOverflow
                           yAxisId={1}
-                          ticks={[12.5, 13, 13.3, 13.8]}
+                          ticks={[today.bmV, (today.b2V + today.b1V) / 2]}
                           dataKey="b2V"
                           domain={[12.2, 14]}
                           tickFormatter={formatV}
@@ -266,10 +268,10 @@ const Monitor = (props) => {
                           allowDataOverflow
                           yAxisId={2}
                           stroke="#ce7e00"
-                          ticks={[-50, -25, 0, 25, 50]}
+                          ticks={[-60, -30, 0, 30, 60]}
                           domain={[-70, 70]}
-                          dataKey="b2A"
-                          tickFormatter={formatAh}
+                          dataKey="b2Ah"
+                          tickFormatter={formatP}
                           orientation="right"
                         />
                         <YAxis
