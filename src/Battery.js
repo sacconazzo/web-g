@@ -81,7 +81,7 @@ const Monitor = (props) => {
 
   const formatW = (value) => formatFlatNumber(value) + 'W'
 
-  // const formatAh = (value) => formatFlatNumber(value) + 'Ah'
+  const formatAh = (value) => formatFlatNumber(value) + 'Ah'
 
   const formatP = (value) => formatFlatNumber(value / 2) + '%'
 
@@ -183,7 +183,7 @@ const Monitor = (props) => {
               {data?.realtime && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
-                    Realtime {formatW(last.b1A * last.b1V + last.b2A * last.b2V)} (
+                    Realtime {formatW(last.b1A * last.b1V + last.b2A * last.b2V)} {formatA(last.b1A + last.b2A)} (
                     {data.realtime[data.realtime.length - 1].temp} °C)
                   </Card.Header>
                   <Card.Body>
@@ -232,8 +232,26 @@ const Monitor = (props) => {
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
                         <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                         <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
-                        <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b1A" dot={false} stroke="#ce7e00" />
-                        <Line yAxisId={2} strokeWidth={2} type="monotone" dataKey="b2A" dot={false} stroke="#e69138" />
+                        <Area
+                          yAxisId={2}
+                          // stackId={1}
+                          strokeWidth={2}
+                          type="monotone"
+                          dataKey="b1A"
+                          dot={false}
+                          stroke="#ce7e00"
+                          fill="#ce7e0055"
+                        />
+                        <Area
+                          yAxisId={2}
+                          // stackId={1}
+                          strokeWidth={2}
+                          type="monotone"
+                          dataKey="b2A"
+                          dot={false}
+                          stroke="#e69138"
+                          fill="#e6913855"
+                        />
                         <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
                       </ComposedChart>
                     </ResponsiveContainer>
@@ -244,7 +262,8 @@ const Monitor = (props) => {
               {data?.dayWeek && (
                 <Card bg="light">
                   <Card.Header as="h5">
-                    Day Week {formatWh(today.b1Wh + today.b2Wh)} ({round((today.b1Ah + today.b2Ah) / 2)}%)
+                    Day {formatWh(today.b1Wh + today.b2Wh)} {formatAh(today.b1Ah + today.b2Ah)} (
+                    {round((today.b1Ah + today.b2Ah) / 2)}%)
                   </Card.Header>
                   <Card.Body>
                     <ResponsiveContainer width={'100%'} height={300}>
