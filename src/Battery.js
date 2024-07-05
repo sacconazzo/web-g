@@ -228,9 +228,7 @@ const Monitor = (props) => {
                         />
                         <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                         <Legend formatter={renderColorfulLegendText} />
-                        <Tooltip
-                          content={<TooltipChart locale={props.locale} formatter={formatter} labelFormatter={timeS} />}
-                        />
+                        <Tooltip content={<TooltipChart formatter={formatter} labelFormatter={timeS} />} />
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
                         <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                         <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
@@ -287,11 +285,7 @@ const Monitor = (props) => {
                           tickFormatter={formatT}
                         />
                         <Legend formatter={renderColorfulLegendText} />
-                        <Tooltip
-                          content={
-                            <TooltipChart locale={props.locale} formatter={formatter} labelFormatter={formatDate} />
-                          }
-                        />
+                        <Tooltip content={<TooltipChart formatter={formatter} labelFormatter={formatDate} />} />
                         <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
                         <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
