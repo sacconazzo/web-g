@@ -235,7 +235,7 @@ const Monitor = (props) => {
                         <Area
                           yAxisId={2}
                           // stackId={1}
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                           type="monotone"
                           dataKey="b1A"
                           dot={false}
@@ -245,14 +245,21 @@ const Monitor = (props) => {
                         <Area
                           yAxisId={2}
                           // stackId={1}
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                           type="monotone"
                           dataKey="b2A"
                           dot={false}
                           stroke="#e69138"
                           fill="#e6913855"
                         />
-                        <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
+                        <Line
+                          yAxisId={3}
+                          type="monotone"
+                          strokeWidth={1.5}
+                          dataKey="temp"
+                          dot={false}
+                          stroke="#6aa84f"
+                        />
                       </ComposedChart>
                     </ResponsiveContainer>
                   </Card.Body>
@@ -323,7 +330,14 @@ const Monitor = (props) => {
                           fill="#e69138"
                           activeBar={<Rectangle fill="#ffd966" stroke="#e69138" />}
                         />
-                        <Line yAxisId={3} type="monotone" dataKey="temp" dot={false} stroke="#6aa84f" />
+                        <Line
+                          yAxisId={3}
+                          type="monotone"
+                          dataKey="temp"
+                          strokeWidth={1.5}
+                          dot={false}
+                          stroke="#6aa84f"
+                        />
                       </ComposedChart>
                     </ResponsiveContainer>
                   </Card.Body>
