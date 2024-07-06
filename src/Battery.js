@@ -26,6 +26,8 @@ import moment from 'moment'
 let data = null
 let last = {}
 let today = {}
+// let minA = 0
+// let maxA = 0
 
 const Monitor = (props) => {
   const [loaded, setLoaded] = useState(false)
@@ -130,6 +132,20 @@ const Monitor = (props) => {
     return <span style={{ color }}>{value}</span>
   }
 
+  const gradientOffset = (f) => {
+    const dataMax = Math.max(...data.realtime.map((i) => i[f]))
+    const dataMin = Math.min(...data.realtime.map((i) => i[f]))
+
+    if (dataMax <= 0) {
+      return 0
+    }
+    if (dataMin >= 0) {
+      return 1
+    }
+
+    return dataMax / (dataMax - dataMin)
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true)
@@ -145,8 +161,15 @@ const Monitor = (props) => {
         })
 
         data = await response.json()
+        if (window.innerHeight > window.innerWidth) data.realtime = data.realtime.slice(-50)
+
         last = data.realtime[data.realtime.length - 1]
         today = data.dayWeek[data.dayWeek.length - 1]
+
+        // minA = data.realtime.reduce((min, c) => (c.b1A < min ? c.b1A : min), 0)
+        // maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
+        // minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
+        // maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
 
         setTimeout(() => {
           setRefresh(refresh + 1)
@@ -232,6 +255,16 @@ const Monitor = (props) => {
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
                         <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                         <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
+                        <defs>
+                          <linearGradient id="splitColor1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset={gradientOffset('b1A')} stopColor="#edb27355" />
+                            <stop offset={gradientOffset('b1A')} stopColor="#ED757377" />
+                          </linearGradient>
+                          <linearGradient id="splitColor2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset={gradientOffset('b2A')} stopColor="#edb27355" />
+                            <stop offset={gradientOffset('b2A')} stopColor="#ED757377" />
+                          </linearGradient>
+                        </defs>
                         <Area
                           yAxisId={2}
                           // stackId={1}
@@ -239,8 +272,8 @@ const Monitor = (props) => {
                           type="monotone"
                           dataKey="b1A"
                           dot={false}
+                          fill="url(#splitColor1)"
                           stroke="#ce7e00"
-                          fill="#ce7e0055"
                         />
                         <Area
                           yAxisId={2}
@@ -250,7 +283,7 @@ const Monitor = (props) => {
                           dataKey="b2A"
                           dot={false}
                           stroke="#e69138"
-                          fill="#e6913855"
+                          fill="url(#splitColor2)"
                         />
                         <Line
                           yAxisId={3}
