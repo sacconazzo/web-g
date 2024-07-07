@@ -227,7 +227,7 @@ const Monitor = (props) => {
                           yAxisId={1}
                           ticks={[last.bmV, (last.b2V + last.b1V) / 2]}
                           dataKey="b2V"
-                          domain={[12, 14.5]}
+                          domain={[12, 15.5]}
                           tickFormatter={formatV}
                         />
                         <YAxis
