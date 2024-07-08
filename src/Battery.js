@@ -207,7 +207,7 @@ const Monitor = (props) => {
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
                     Realtime {formatW(last.b1A * last.b1V + last.b2A * last.b2V)} {formatA(last.b1A + last.b2A)} (
-                    {data.realtime[data.realtime.length - 1].temp} °C)
+                    {data.realtime[data.realtime.length - 1].temp}°C)
                   </Card.Header>
                   <Card.Body>
                     <ResponsiveContainer width={'100%'} height={300}>
