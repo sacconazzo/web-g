@@ -26,7 +26,7 @@ const Private = (props) => {
         <Container className="p-3 text-center">
           <Jumbotron>
             <h1 className="header">Control Panel</h1>
-            <Form action="/personale.php" method="post">
+            <Form action="https://sacconazzo.altervista.org/personale.php" method="post">
               <input type="hidden" name="pwd" value={props.auth} />
               <Button type="submit">Accedi</Button>
             </Form>
