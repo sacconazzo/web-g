@@ -26,8 +26,8 @@ import moment from 'moment'
 let data = null
 let last = {}
 let today = {}
-// let minA = 0
-// let maxA = 0
+let minA = 0
+let maxA = 0
 
 const Monitor = (props) => {
   const [loaded, setLoaded] = useState(false)
@@ -178,10 +178,10 @@ const Monitor = (props) => {
         last = data.realtime[data.realtime.length - 1]
         today = data.dayWeek[data.dayWeek.length - 1]
 
-        // minA = data.realtime.reduce((min, c) => (c.b1A < min ? c.b1A : min), 0)
-        // maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
-        // minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
-        // maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
+        minA = data.realtime.reduce((min, c) => (c.b1A < min ? c.b1A : min), 0)
+        maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
+        minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
+        maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
 
         setTimeout(() => {
           setRefresh(refresh + 1)
@@ -218,8 +218,8 @@ const Monitor = (props) => {
               {data?.realtime && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
-                    Realtime {formatW(last.b1A * last.b1V + last.b2A * last.b2V)} {formatA(last.b1A + last.b2A)} (
-                    {data.realtime[data.realtime.length - 1].temp}°C)
+                    Realtime <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
+                    ({data.realtime[data.realtime.length - 1].temp}°C)
                   </Card.Header>
                   <Card.Body>
                     <ResponsiveContainer width={'100%'} height={300}>
@@ -246,7 +246,7 @@ const Monitor = (props) => {
                           allowDataOverflow
                           yAxisId={2}
                           stroke="#ce7e00"
-                          ticks={[(last.b1A + last.b2A) / 2]}
+                          ticks={[minA, (last.b1A + last.b2A) / 2, maxA]}
                           domain={[-35, 15]}
                           dataKey="b2A"
                           tickFormatter={formatA}
@@ -262,6 +262,8 @@ const Monitor = (props) => {
                           tickFormatter={formatT}
                         />
                         <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
+                        <ReferenceLine y={minA} yAxisId={2} stroke="#ED757355" strokeDasharray="3 3" />
+                        <ReferenceLine y={maxA} yAxisId={2} stroke="#edb27377" strokeDasharray="3 3" />
                         <Legend formatter={renderColorfulLegendText} />
                         <Tooltip content={<TooltipChart formatter={formatter} labelFormatter={timeS} />} />
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
@@ -314,7 +316,7 @@ const Monitor = (props) => {
               {data?.dayWeek && (
                 <Card bg="light">
                   <Card.Header as="h5">
-                    Day {formatWh(today.b1Wh + today.b2Wh)} {formatAh(today.b1Ah + today.b2Ah)} (
+                    Day <b>{formatWh(today.b1Wh + today.b2Wh)}</b> {formatAh(today.b1Ah + today.b2Ah)} (
                     {round((today.b1Ah + today.b2Ah) / 2)}%)
                   </Card.Header>
                   <Card.Body>
