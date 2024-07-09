@@ -47,16 +47,28 @@ const Monitor = (props) => {
       h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
       m = ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(),
       s = ':' + (d.getSeconds() < 10 ? '0' : '') + d.getSeconds()
-    return `${moment(date).fromNow()}${w} (${h}${m}${s})`
+    return (
+      <>
+        {moment(date).fromNow(true)}
+        <b>{w}</b>
+        {` (${h}${m}${s})`}
+      </>
+    )
   }
 
   const round = (v) => (Math.round(v) > 0 ? `+${Math.round(v)}` : `${Math.round(v)}`)
 
   const formatDate = (value, values) => {
-    const options = { weekday: 'long' }
+    const options = { weekday: 'long', day: 'numeric' }
     const perc = values.length ? ` (${round((values[0].payload.b1Ah + values[0].payload.b2Ah) / 2)}%)` : ''
     const wh = values.length ? ` ${formatWh(values[0].payload.b1Wh + values[0].payload.b2Wh)}` : ''
-    return new Date(value).toLocaleDateString(props.locale, options) + wh + perc
+    return (
+      <>
+        {new Date(value).toLocaleDateString(props.locale, options)}
+        <b> {wh}</b>
+        {perc}
+      </>
+    )
   }
 
   const formatDateShort = (value) => {

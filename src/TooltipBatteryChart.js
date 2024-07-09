@@ -13,7 +13,7 @@ export default function TooltipTransactions({ active, payload, label, labelForma
           listStyleType: 'none',
         }}
       >
-        <li className="label">{`${labelFormatter(label, payload)}`}</li>
+        <li className="label">{labelFormatter(label, payload)}</li>
         {payload.map((t, index) => {
           const formattedValue = formatter(t.value, t.name)
           return (
