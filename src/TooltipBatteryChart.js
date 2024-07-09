@@ -6,7 +6,7 @@ export default function TooltipTransactions({ active, payload, label, labelForma
       <ul
         className="custom-tooltip"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
           padding: '10px',
           border: '1px solid #ccc',
           borderRadius: '5px',
