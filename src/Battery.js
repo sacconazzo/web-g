@@ -28,6 +28,8 @@ let last = {}
 let today = {}
 let minA = 0
 let maxA = 0
+let minAh = 0
+let maxAh = 0
 
 const Monitor = (props) => {
   const [loaded, setLoaded] = useState(false)
@@ -182,6 +184,9 @@ const Monitor = (props) => {
         maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
         minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
         maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
+
+        minAh = data.dayWeek.reduce((min, c) => (c.b1Ah + c.b2Ah < min ? c.b1Ah + c.b2Ah : min), 0)
+        maxAh = data.dayWeek.reduce((max, c) => (c.b1Ah + c.b2Ah > max ? c.b1Ah + c.b2Ah : max), 0)
 
         setTimeout(() => {
           setRefresh(refresh + 1)
@@ -360,6 +365,8 @@ const Monitor = (props) => {
                         <Legend formatter={renderColorfulLegendText} />
                         <Tooltip content={<TooltipChart formatter={formatter} labelFormatter={formatDate} />} />
                         <ReferenceLine y={0} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
+                        <ReferenceLine y={minAh} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
+                        <ReferenceLine y={maxAh} yAxisId={2} stroke="#ce7e00" strokeDasharray="3 3" />
                         <Area yAxisId={1} type="monotone" dataKey="bmV" dot={false} stroke="#cc0000" fill="#cc0000" />
                         <Area yAxisId={1} type="monotone" dataKey="b1V" dot={false} stroke="#45818e" fill="#76a5af" />
                         <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
