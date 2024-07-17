@@ -78,22 +78,23 @@ const Monitor = (props) => {
     return new Date(value).toLocaleDateString(props.locale, options)
   }
 
-  const formatFlatNumber = (value) =>
+  const formatFlatNumber = (value, dec = 0) =>
     value.toLocaleString(props.locale, {
-      maximumFractionDigits: 0,
+      minimumFractionDigits: dec,
+      maximumFractionDigits: dec,
       signDisplay: 'always',
     })
 
   const formatV = (value) => {
     return (
       value.toLocaleString(props.locale, {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
       }) + 'V'
     )
   }
 
-  const formatA = (value) => formatFlatNumber(value) + 'A'
+  const formatA = (value) => formatFlatNumber(value, 0) + 'A'
 
   const formatW = (value) => formatFlatNumber(value) + 'W'
 
