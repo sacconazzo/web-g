@@ -34,8 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "node -r dotenv/config deploy",
-    "prod": "yarn build && yarn deploy"
+    "deploy:ftp": "node -r dotenv/config deployFTP"
   },
   "eslintConfig": {
     "extends": "react-app"

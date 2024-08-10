@@ -10,11 +10,11 @@ const config = {
   remoteRoot: process.env.deployRemoteRoot,
   include: ['*.*'],
   exclude: ['static/**/*.map'],
-  deleteRemote: true,
+  deleteRemote: false,
   forcePasv: true,
 }
 
-console.log('Deploy to production...')
+console.log('Deploy ftp...')
 
 ftpDeploy
   .deploy(config)
