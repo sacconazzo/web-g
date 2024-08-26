@@ -181,10 +181,12 @@ const Monitor = (props) => {
         last = data.realtime[data.realtime.length - 1]
         today = data.dayWeek[data.dayWeek.length - 1]
 
-        minA = data.realtime.reduce((min, c) => (c.b1A < min ? c.b1A : min), 0)
-        maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
-        minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
-        maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
+        // minA = data.realtime.reduce((min, c) => (c.b1A < min ? c.b1A : min), 0)
+        // maxA = data.realtime.reduce((max, c) => (c.b1A > max ? c.b1A : max), 0)
+        // minA = data.realtime.reduce((min, c) => (c.b2A < min ? c.b2A : min), minA)
+        // maxA = data.realtime.reduce((max, c) => (c.b2A > max ? c.b2A : max), maxA)
+        minA = data.realtime.reduce((min, c) => (c.b1A + c.b2A < min ? c.b1A + c.b2A : min), 0)
+        maxA = data.realtime.reduce((max, c) => (c.b1A + c.b2A > max ? c.b1A + c.b2A : max), 0)
 
         minAh = data.dayWeek.reduce((min, c) => (c.b1Ah + c.b2Ah < min ? c.b1Ah + c.b2Ah : min), 0)
         maxAh = data.dayWeek.reduce((max, c) => (c.b1Ah + c.b2Ah > max ? c.b1Ah + c.b2Ah : max), 0)
@@ -252,7 +254,7 @@ const Monitor = (props) => {
                           allowDataOverflow
                           yAxisId={2}
                           stroke="#ce7e00"
-                          ticks={[minA, (last.b1A + last.b2A) / 2, maxA]}
+                          ticks={[minA, last.b1A + last.b2A, maxA]}
                           domain={[-35, 15]}
                           dataKey="b2A"
                           tickFormatter={formatA}
@@ -287,8 +289,8 @@ const Monitor = (props) => {
                         </defs>
                         <Area
                           yAxisId={2}
-                          // stackId={1}
-                          strokeWidth={1.5}
+                          stackId={1}
+                          strokeWidth={1}
                           type="monotone"
                           dataKey="b1A"
                           dot={false}
@@ -297,8 +299,8 @@ const Monitor = (props) => {
                         />
                         <Area
                           yAxisId={2}
-                          // stackId={1}
-                          strokeWidth={1.5}
+                          stackId={1}
+                          strokeWidth={1}
                           type="monotone"
                           dataKey="b2A"
                           dot={false}
