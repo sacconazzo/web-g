@@ -210,16 +210,16 @@ const Monitor = (props) => {
       </Navbar>
       <Fade in={loaded}>
         <Container className="p-3">
-          <Jumbotron className="text-center">
-            <h1 className="header">
-              <strong>Van Battery Monitor</strong>
-            </h1>
-            {data?.system && (
-              <p>
-                {data.system.uptime} ({data.system.temp} °C)
-              </p>
-            )}
-          </Jumbotron>
+          {/* <Jumbotron className="text-center"> */}
+          <h1 className="header text-center">
+            <strong>Van Battery Monitor</strong>
+          </h1>
+          {data?.system && (
+            <p className="header text-center">
+              {data.system.uptime} ({data.system.temp} °C)
+            </p>
+          )}
+          {/* </Jumbotron> */}
           {!data && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!data}>
             <>

@@ -49,11 +49,13 @@ const Monitor = (props) => {
       </Navbar>
       <Fade in={loaded}>
         <Container className="p-3">
-          <Jumbotron className="text-center">
-            <h1 className="header">
-              <strong>g NAS</strong> e <strong>SCN Router</strong>
-            </h1>
-          </Jumbotron>
+          {/* <Jumbotron className="text-center"> */}
+          <h1 className="header text-center">
+            <strong>g NAS</strong> e <strong>SCN Router</strong>
+          </h1>
+          <br />
+          <p className="header text-center"></p>
+          {/* </Jumbotron> */}
           {!cpu?.scnuptime && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!cpu}>
             <CardDeck>
