@@ -13,7 +13,7 @@ import {
   ReferenceLine,
   Rectangle,
 } from 'recharts'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+// import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Card from 'react-bootstrap/Card'
