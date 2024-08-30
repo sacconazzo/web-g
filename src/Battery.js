@@ -379,14 +379,14 @@ const Monitor = (props) => {
                           yAxisId={2}
                           stackId={1}
                           dataKey="b1Ah"
-                          fill="#DCA44CEE"
+                          fill="#DCA44C"
                           activeBar={<Rectangle fill="#DCA44C" stroke="#ce7e00" />}
                         />
                         <Bar
                           yAxisId={2}
                           stackId={1}
                           dataKey="b2Ah"
-                          fill="#EDB273EE"
+                          fill="#EDB273"
                           activeBar={<Rectangle fill="#edb273" stroke="#ce7e00" />}
                         />
                         <Line
