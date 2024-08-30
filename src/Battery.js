@@ -45,6 +45,7 @@ const Monitor = (props) => {
     const w = values.length
       ? ` ${formatW(values[0].payload.b1A * values[0].payload.b1V + values[0].payload.b2A * values[0].payload.b2V)}`
       : ''
+    const a = values.length ? ` ${formatA(values[0].payload.b1A + values[0].payload.b2A)}` : ''
     const d = new Date(date),
       h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
       m = ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(),
@@ -53,6 +54,7 @@ const Monitor = (props) => {
       <>
         {moment(date).fromNow(true)}
         <b>{w}</b>
+        {a}
         {` (${h}${m}${s})`}
       </>
     )
@@ -279,8 +281,8 @@ const Monitor = (props) => {
                         <Area yAxisId={1} type="monotone" dataKey="b2V" dot={false} stroke="#3d85c6" fill="#6fa8dc" />
                         <defs>
                           <linearGradient id="splitColor1" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset={gradientOffset('b1A')} stopColor="#edb27355" />
-                            <stop offset={gradientOffset('b1A')} stopColor="#ED757377" />
+                            <stop offset={gradientOffset('b1A')} stopColor="#edb27388" />
+                            <stop offset={gradientOffset('b1A')} stopColor="#ED7573AA" />
                           </linearGradient>
                           <linearGradient id="splitColor2" x1="0" y1="0" x2="0" y2="1">
                             <stop offset={gradientOffset('b2A')} stopColor="#edb27355" />
@@ -290,7 +292,7 @@ const Monitor = (props) => {
                         <Area
                           yAxisId={2}
                           stackId={1}
-                          strokeWidth={1}
+                          strokeWidth={0}
                           type="monotone"
                           dataKey="b1A"
                           dot={false}
@@ -377,15 +379,15 @@ const Monitor = (props) => {
                           yAxisId={2}
                           stackId={1}
                           dataKey="b1Ah"
-                          fill="#ce7e00"
-                          activeBar={<Rectangle fill="#f6b26b" stroke="#ce7e00" />}
+                          fill="#DCA44CEE"
+                          activeBar={<Rectangle fill="#DCA44C" stroke="#ce7e00" />}
                         />
                         <Bar
                           yAxisId={2}
                           stackId={1}
                           dataKey="b2Ah"
-                          fill="#e69138"
-                          activeBar={<Rectangle fill="#ffd966" stroke="#e69138" />}
+                          fill="#EDB273EE"
+                          activeBar={<Rectangle fill="#edb273" stroke="#ce7e00" />}
                         />
                         <Line
                           yAxisId={3}
