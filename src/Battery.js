@@ -218,7 +218,7 @@ const Monitor = (props) => {
           </h1>
           {data?.system && (
             <p className="header text-center">
-              {data.system.uptime} ({data.system.temp} °C)
+              {data.system.uptime} ({data.system.tempCpu}/{data.system.tempGpu} °C)
             </p>
           )}
           {/* </Jumbotron> */}
