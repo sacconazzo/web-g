@@ -257,7 +257,7 @@ const Monitor = (props) => {
                           yAxisId={2}
                           stroke="#ce7e00"
                           ticks={[minA, last.b1A + last.b2A, maxA]}
-                          domain={[-35, 15]}
+                          domain={[-55, 25]}
                           dataKey="b2A"
                           tickFormatter={formatA}
                           orientation="right"
