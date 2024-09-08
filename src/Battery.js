@@ -225,12 +225,13 @@ const Monitor = (props) => {
           {!data && <Spinner className="ml-3" animation="grow" />}
           <Fade in={!!data}>
             <>
-              {data?.realtime && (
+              {data?.realtime && last && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
                     Realtime <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
                     ({data.realtime[data.realtime.length - 1].temp}°C)
                   </Card.Header>
+
                   <Card.Body>
                     <ResponsiveContainer width={'100%'} height={300}>
                       <ComposedChart
@@ -323,7 +324,7 @@ const Monitor = (props) => {
                 </Card>
               )}
               <p></p>
-              {data?.dayWeek && (
+              {data?.dayWeek && today && (
                 <Card bg="light">
                   <Card.Header as="h5">
                     Day <b>{formatWh(today.b1Wh + today.b2Wh)}</b> {formatAh(today.b1Ah + today.b2Ah)} (
