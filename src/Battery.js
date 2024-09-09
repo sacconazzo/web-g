@@ -207,9 +207,11 @@ const Monitor = (props) => {
 
   return (
     <div>
-      <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
-        <Navbar.Brand>Battery Monitor</Navbar.Brand>
-      </Navbar>
+      {!props.flat && (
+        <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
+          <Navbar.Brand>Battery Monitor</Navbar.Brand>
+        </Navbar>
+      )}
       <Fade in={loaded}>
         <Container className="p-3">
           {/* <Jumbotron className="text-center"> */}
