@@ -13,8 +13,8 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
         <Route path="/battery" element={<Battery />} />
+        <Route path="*" element={<App />} />
       </Routes>
     </Router>
   </React.StrictMode>,
