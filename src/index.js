@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
+import Battery from './Battery'
 import * as serviceWorker from './serviceWorker'
 
 // Importing the Bootstrap CSS
@@ -11,7 +12,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/battery" element={<Battery />} />
+      </Routes>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
