@@ -96,7 +96,7 @@ const Monitor = (props) => {
     )
   }
 
-  const formatA = (value) => formatFlatNumber(value, 0) + 'A'
+  const formatA = (value) => formatFlatNumber(value, 1) + 'A'
 
   const formatW = (value) => formatFlatNumber(value) + 'W'
 
