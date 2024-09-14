@@ -230,7 +230,7 @@ const Monitor = (props) => {
               {data?.realtime && last && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
-                    Realtime <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
+                    Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
                     ({data.realtime[data.realtime.length - 1].temp}°C)
                   </Card.Header>
 
