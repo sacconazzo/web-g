@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button'
 
 var msg
 
-const Home = () => {
+const Home = (props) => {
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     setTimeout(() => {
@@ -38,7 +38,7 @@ const Home = () => {
   const [error, setError] = useState(false)
 
   return (
-    <div>
+    <div style={{ display: props.isVisible ? 'block' : 'none' }}>
       <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
         <Navbar.Brand>Welcome</Navbar.Brand>
       </Navbar>

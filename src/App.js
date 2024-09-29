@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './App.css'
 import Home from './Home'
 import Private from './Private'
@@ -92,11 +92,29 @@ const views = {
 
 var auth = localStorage.getItem('auth')
 
+function useScrollRestoration() {
+  const location = useLocation()
+  const [main] = document.getElementsByTagName('main')
+
+  useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem(location.hash)
+    if (savedScrollPosition && main) {
+      main.scrollTo(0, parseInt(savedScrollPosition))
+    }
+
+    return () => {
+      if (main) sessionStorage.setItem(location.hash, main.scrollTop.toString())
+    }
+  }, [location.hash, main])
+}
+
 function App() {
   const navigate = useNavigate()
   const path = window.location.hash
   var sel = path.replace(/[^\w\s]/gi, '')
   sel = sel === '' || !sel ? 'home' : sel
+
+  useScrollRestoration()
 
   window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || 'home')
 
@@ -114,7 +132,7 @@ function App() {
   `
 
   return (
-    <>
+    <div>
       <Head expanded={expanded}>
         <Navbar variant="dark" bg="dark" className="justify-content-between" sticky="top">
           <Image className="px-1" alt="logo" src={Icon} width="28" height="20" />
@@ -228,14 +246,14 @@ function App() {
           </SideNav.Nav>
         </SideNavF>
         <Main expanded={expanded}>
-          {view === 'home' && <Home />}
-          {view === 'monitor' && <Monitor />}
-          {view === 'battery' && <Battery />}
-          {view === 'dailynotes' && <DailyNotes />}
-          {view === 'quorum' && <Sballot />}
-          {view === 'dapp' && <Dapp />}
-          {view === 'balance' && <Balance />}
-          {view === 'private' && <Private auth={auth} />}
+          <Home isVisible={view === 'home'} />
+          <Monitor isVisible={view === 'monitor'} />
+          <Battery isVisible={view === 'battery'} />
+          <DailyNotes isVisible={view === 'dailynotes'} />
+          <Sballot isVisible={view === 'quorum'} />
+          <Dapp isVisible={view === 'dapp'} />
+          <Balance isVisible={view === 'balance'} />
+          <Private auth={auth} isVisible={view === 'private'} />
           {view === 'login' && (
             <Login
               close={() => {
@@ -257,7 +275,7 @@ function App() {
           </Navbar.Collapse>
         </Navbar>
       </Bar>
-    </>
+    </div>
   )
 }
 

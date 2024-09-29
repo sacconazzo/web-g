@@ -13,12 +13,12 @@ const Private = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true)
-      console.log(props.auth)
+      // console.log(props.auth)
     }, 50)
   })
 
   return (
-    <>
+    <div style={{ display: props.isVisible ? 'block' : 'none' }}>
       <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
         <Navbar.Brand>Private section</Navbar.Brand>
       </Navbar>
@@ -33,7 +33,7 @@ const Private = (props) => {
           </Jumbotron>
         </Container>
       </Fade>
-    </>
+    </div>
   )
 }
 

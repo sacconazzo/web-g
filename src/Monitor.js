@@ -43,7 +43,7 @@ const Monitor = (props) => {
   }, [refresh, props])
 
   return (
-    <div>
+    <div style={{ display: props.isVisible ? 'block' : 'none' }}>
       <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
         <Navbar.Brand>System Monitor</Navbar.Brand>
       </Navbar>

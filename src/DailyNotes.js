@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed'
 import Fade from 'react-bootstrap/Fade'
 
-const Balance = () => {
+const Balance = (props) => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Balance = () => {
   }, [loaded])
 
   return (
-    <div>
+    <div style={{ display: props.isVisible ? 'block' : 'none' }}>
       <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
         <Navbar.Brand>Daily Notes</Navbar.Brand>
       </Navbar>

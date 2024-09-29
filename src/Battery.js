@@ -206,7 +206,7 @@ const Monitor = (props) => {
   }, [refresh, props])
 
   return (
-    <div>
+    <div style={{ display: props.isVisible ? 'block' : 'none' }}>
       {!props.flat && (
         <Navbar className="shadow-sm" bg="light" expand="lg" sticky="top">
           <Navbar.Brand>Battery Monitor</Navbar.Brand>
@@ -230,8 +230,8 @@ const Monitor = (props) => {
               {data?.realtime && last && (
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
-                    Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
-                    ({data.realtime[data.realtime.length - 1].temp}°C)
+                    Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)} (
+                    {data.realtime[data.realtime.length - 1].temp}°C)
                   </Card.Header>
 
                   <Card.Body>
