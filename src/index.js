@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/battery" element={<Battery flat={true} />} />
+        <Route path="/battery" element={<Battery flat={true} isVisible={true} />} />
         <Route path="*" element={<App />} />
       </Routes>
     </Router>
