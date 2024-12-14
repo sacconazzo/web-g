@@ -250,8 +250,8 @@ function App() {
           <Monitor isVisible={view === 'monitor'} />
           <Battery isVisible={view === 'battery'} />
           <DailyNotes isVisible={view === 'dailynotes'} />
-          <Sballot isVisible={view === 'quorum'} />
-          <Dapp isVisible={view === 'dapp'} />
+          {view === 'quorum' && <Sballot />}
+          {view === 'dapp' && <Dapp />}
           <Balance isVisible={view === 'balance'} />
           <Private auth={auth} isVisible={view === 'private'} />
           {view === 'login' && (
