@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { isMobile } from 'react-device-detect'
 import './App.css'
 import Home from './Home'
 import Private from './Private'
@@ -119,7 +120,7 @@ function App() {
   window.onpopstate = () => setView(window.location.hash.replace(/[^\w\s]/gi, '') || 'home')
 
   const [view, setView] = useState(sel)
-  const [expanded, setState] = useState(false)
+  const [expanded, setState] = useState(!isMobile)
 
   document.title = views[view].title
   const handleSetView = (view) => {
