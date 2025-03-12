@@ -143,6 +143,45 @@ const Monitor = (props) => {
         }) + ' V'
   }
 
+  const formatPercBattery = (value) => {
+    return (
+      value.toLocaleString(props.locale, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }) + '%'
+    )
+  }
+
+  const getPercBatteryFromVoltage = (voltage) => {
+    const data = [
+      { V: 13.6, C: 100 },
+      { V: 13.4, C: 99 },
+      { V: 13.3, C: 90 },
+      { V: 13.2, C: 70 },
+      { V: 13.1, C: 40 },
+      { V: 13.0, C: 30 },
+      { V: 12.9, C: 20 },
+      { V: 12.8, C: 17 },
+      { V: 12.5, C: 14 },
+      { V: 12.0, C: 9 },
+      { V: 10.0, C: 0 },
+    ]
+
+    for (let i = 0; i < data.length - 1; i++) {
+      const V1 = data[i].V,
+        C1 = data[i].C
+      const V2 = data[i + 1].V,
+        C2 = data[i + 1].C
+
+      if (voltage <= V1 && voltage >= V2) {
+        // Interpolazione lineare tra i due punti
+        return formatPercBattery(C1 + ((C2 - C1) / (V2 - V1)) * (voltage - V1))
+      }
+    }
+
+    return formatPercBattery(voltage > 13.6 ? 100 : 0) // Valori fuori range
+  }
+
   const renderColorfulLegendText = (value, entry) => {
     const { color } = entry
 
@@ -231,7 +270,8 @@ const Monitor = (props) => {
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
                     Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)} (
-                    {data.realtime[data.realtime.length - 1].temp}°C)
+                    {getPercBatteryFromVoltage((last.b1V + last.b2V) / 2)})
+                    <span style={{ float: 'right' }}>{data.realtime[data.realtime.length - 1].temp}°C</span>
                   </Card.Header>
 
                   <Card.Body>
