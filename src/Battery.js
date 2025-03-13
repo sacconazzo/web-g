@@ -153,7 +153,7 @@ const Monitor = (props) => {
   }
 
   const getPercBatteryFromVoltage = (realtime) => {
-    const snaps = realtime.filter((s) => s.b1A >= -1 && s.b1A <= 1 && s.b2A >= -1 && s.b2A <= 1).slice(-10)
+    const snaps = realtime.filter((s) => s.b1A >= -1 && s.b1A <= 1 && s.b2A >= -1 && s.b2A <= 1)
     const voltage = snaps.reduce((sum, s) => sum + s.b1V + s.b2V, 0) / (snaps.length * 2)
 
     const data = [
