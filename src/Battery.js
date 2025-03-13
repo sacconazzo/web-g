@@ -152,7 +152,10 @@ const Monitor = (props) => {
     )
   }
 
-  const getPercBatteryFromVoltage = (voltage) => {
+  const getPercBatteryFromVoltage = (realtime) => {
+    const snaps = realtime.filter((s) => s.b1A >= -1 && s.b1A <= 1 && s.b2A >= -1 && s.b2A <= 1).slice(-10)
+    const voltage = snaps.reduce((sum, s) => sum + s.b1V + s.b2V, 0) / (snaps.length * 2)
+
     const data = [
       { V: 13.6, C: 100 },
       { V: 13.4, C: 99 },
@@ -270,7 +273,7 @@ const Monitor = (props) => {
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
                     Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)} (
-                    {getPercBatteryFromVoltage((last.b1V + last.b2V) / 2)})
+                    {getPercBatteryFromVoltage(data.realtime)})
                     <span style={{ float: 'right' }}>{data.realtime[data.realtime.length - 1].temp}°C</span>
                   </Card.Header>
 
