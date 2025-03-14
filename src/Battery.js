@@ -22,6 +22,7 @@ import Fade from 'react-bootstrap/Fade'
 import Spinner from 'react-bootstrap/Spinner'
 import TooltipChart from './TooltipBatteryChart'
 import moment from 'moment'
+// import Spline from 'cubic-spline'
 
 let data = null
 let last = {}
@@ -145,12 +146,12 @@ const Monitor = (props) => {
 
   const formatPercBattery = (value) => {
     return (
-      '(' +
+      '' +
       value.toLocaleString(props.locale, {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
       }) +
-      '%)'
+      '%'
     )
   }
 
@@ -172,6 +173,17 @@ const Monitor = (props) => {
       { V: 12.0, C: 9 },
       { V: 10.0, C: 0 },
     ]
+
+    // cubic spline vs linear interpolation
+    // data.reverse()
+
+    // // Estrai gli array di tensione e percentuale di carica
+    // const voltages = data.map((point) => point.V)
+    // const charges = data.map((point) => point.C)
+
+    // // Crea la spline cubica
+    // const spline = new Spline(voltages, charges)
+    // spline.at(voltage)
 
     for (let i = 0; i < data.length - 1; i++) {
       const V1 = data[i].V,
@@ -276,7 +288,7 @@ const Monitor = (props) => {
                 <Card bg="" text="dark">
                   <Card.Header as="h5">
                     Live <b>{formatW(last.b1A * last.b1V + last.b2A * last.b2V)}</b> {formatA(last.b1A + last.b2A)}{' '}
-                    {getPercBatteryFromVoltage(data.realtime)}
+                    {/* {getPercBatteryFromVoltage(data.realtime)} */}
                     <span style={{ float: 'right' }}>{data.realtime[data.realtime.length - 1].temp}°C</span>
                   </Card.Header>
 
@@ -291,6 +303,18 @@ const Monitor = (props) => {
                           bottom: 5,
                         }}
                       >
+                        <text
+                          x="50%"
+                          y="35%"
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fontSize={24}
+                          fill="#aaaaaa"
+                          fontWeight="bold"
+                          style={{ pointerEvents: 'none', opacity: 0.6 }}
+                        >
+                          {getPercBatteryFromVoltage(data.realtime)}
+                        </text>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
                         <YAxis
