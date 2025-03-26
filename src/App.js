@@ -206,12 +206,12 @@ function App() {
               </NavIcon>
               <NavText>Battery</NavText>
             </NavItem>
-            {/* <NavItem eventKey="camera">
+            <NavItem eventKey="camera">
               <NavIcon>
                 <i className="fa fa-fw fa-video-camera" style={{ fontSize: '1.75em' }} />
               </NavIcon>
               <NavText>Camera</NavText>
-            </NavItem> */}
+            </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
                 <i className="fa fa-fw fa-tachometer" style={{ fontSize: '1.75em' }} />
