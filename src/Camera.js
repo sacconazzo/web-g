@@ -9,9 +9,10 @@ const CLOUDFLARE_LOGIN_URL = 'https://picam.giona.tech'
 const Camera = (props) => {
   const [loaded, setLoaded] = useState(false)
   const [authenticated, setAuthenticated] = useState(false)
+  const [loginWindow, setLoginWindow] = useState(null)
 
   useEffect(() => {
-    // Controlla se l'utente è autenticato (Cloudflare usa un cookie)
+    // Controlla se l'utente è autenticato (il cookie viene inviato automaticamente con la richiesta)
     fetch(CAMERA_URL, { credentials: 'include' })
       .then((response) => {
         if (response.status === 200) {
@@ -28,20 +29,33 @@ const Camera = (props) => {
   }, [])
 
   const openLoginPopup = () => {
-    let loginWindow = window.open(
-      CLOUDFLARE_LOGIN_URL,
-      'Login',
-      'width=500,height=600,left=100,top=100,resizable=no,scrollbars=no'
-    )
+    let loginWin = window.open(CLOUDFLARE_LOGIN_URL, 'Login', 'width=500,height=600')
+    setLoginWindow(loginWin)
 
     let checkLogin = setInterval(() => {
-      if (loginWindow && loginWindow.closed) {
+      if (loginWin && loginWin.closed) {
         clearInterval(checkLogin)
-        // Dopo il login, ricarica la pagina
-        window.location.reload()
+        // Dopo il login, verifica se l'utente è autenticato
+        fetch(CAMERA_URL, { credentials: 'include' })
+          .then((response) => {
+            if (response.status === 200) {
+              setAuthenticated(true)
+            }
+          })
+          .catch(() => {
+            // In caso di errore, l'utente non è autenticato
+            setAuthenticated(false)
+          })
       }
     }, 1000)
   }
+
+  useEffect(() => {
+    if (authenticated && loginWindow) {
+      // Chiudi il popup se l'utente è autenticato
+      loginWindow.close()
+    }
+  }, [authenticated, loginWindow])
 
   return (
     <div style={{ display: props.isVisible ? 'block' : 'none' }}>
