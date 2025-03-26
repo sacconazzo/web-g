@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Fade from 'react-bootstrap/Fade'
 
 const CAMERA_URL = 'https://picam.giona.tech'
-const CLOUDFLARE_LOGIN_URL = 'https://sacconazzo.cloudflareaccess.com/'
+const CLOUDFLARE_LOGIN_URL = 'https://picam.giona.tech'
 
 const Camera = (props) => {
   const [loaded, setLoaded] = useState(false)
