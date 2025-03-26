@@ -6,6 +6,7 @@ import Home from './Home'
 import Private from './Private'
 import Monitor from './Monitor'
 import Battery from './Battery'
+import Camera from './Camera'
 import DailyNotes from './DailyNotes'
 import Sballot from './Sballot'
 import Dapp from './Dapp'
@@ -64,6 +65,10 @@ const views = {
   battery: {
     color: '#34558b',
     title: 'Battery Monitor',
+  },
+  camera: {
+    color: '#B0415D',
+    title: 'Pi Camera',
   },
   dailynotes: {
     color: '#C03D33',
@@ -201,6 +206,12 @@ function App() {
               </NavIcon>
               <NavText>Battery</NavText>
             </NavItem>
+            <NavItem eventKey="camera">
+              <NavIcon>
+                <i className="fa fa-fw fa-video-camera" style={{ fontSize: '1.75em' }} />
+              </NavIcon>
+              <NavText>Camera</NavText>
+            </NavItem>
             <NavItem eventKey="monitor">
               <NavIcon>
                 <i className="fa fa-fw fa-tachometer" style={{ fontSize: '1.75em' }} />
@@ -250,6 +261,7 @@ function App() {
           <Home isVisible={view === 'home'} />
           <Monitor isVisible={view === 'monitor'} />
           <Battery isVisible={view === 'battery'} />
+          {view === 'camera' && <Camera isVisible={true} />}
           <DailyNotes isVisible={view === 'dailynotes'} />
           {view === 'quorum' && <Sballot isVisible={true} />}
           {view === 'dapp' && <Dapp isVisible={true} />}
