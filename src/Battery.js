@@ -144,61 +144,61 @@ const Monitor = (props) => {
         }) + ' V'
   }
 
-  const formatPercBattery = (value) => {
-    return (
-      '' +
-      value.toLocaleString(props.locale, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }) +
-      '%'
-    )
-  }
+  // const formatPercBattery = (value) => {
+  //   return (
+  //     '' +
+  //     value.toLocaleString(props.locale, {
+  //       minimumFractionDigits: 0,
+  //       maximumFractionDigits: 0,
+  //     }) +
+  //     '%'
+  //   )
+  // }
 
-  const getPercBatteryFromVoltage = (realtime) => {
-    const snaps = realtime.filter((s) => s.b1A >= -0.5 && s.b1A <= 0.5 && s.b2A >= -0.5 && s.b2A <= 0.5)
-    const voltage = snaps.reduce((sum, s) => sum + s.b1V + s.b2V, 0) / (snaps.length * 2)
-    if (!voltage) return ''
+  // const getPercBatteryFromVoltage = (realtime) => {
+  //   const snaps = realtime.filter((s) => s.b1A >= -0.5 && s.b1A <= 0.5 && s.b2A >= -0.5 && s.b2A <= 0.5)
+  //   const voltage = snaps.reduce((sum, s) => sum + s.b1V + s.b2V, 0) / (snaps.length * 2)
+  //   if (!voltage) return ''
 
-    const data = [
-      { V: 13.6, C: 100 },
-      { V: 13.4, C: 99 },
-      { V: 13.3, C: 90 },
-      { V: 13.2, C: 70 },
-      { V: 13.1, C: 40 },
-      { V: 13.0, C: 30 },
-      { V: 12.9, C: 20 },
-      { V: 12.8, C: 17 },
-      { V: 12.5, C: 14 },
-      { V: 12.0, C: 9 },
-      { V: 10.0, C: 0 },
-    ]
+  //   const data = [
+  //     { V: 13.6, C: 100 },
+  //     { V: 13.4, C: 99 },
+  //     { V: 13.3, C: 90 },
+  //     { V: 13.2, C: 70 },
+  //     { V: 13.1, C: 40 },
+  //     { V: 13.0, C: 30 },
+  //     { V: 12.9, C: 20 },
+  //     { V: 12.8, C: 17 },
+  //     { V: 12.5, C: 14 },
+  //     { V: 12.0, C: 9 },
+  //     { V: 10.0, C: 0 },
+  //   ]
 
-    // cubic spline vs linear interpolation
-    // data.reverse()
+  //   // cubic spline vs linear interpolation
+  //   // data.reverse()
 
-    // // Estrai gli array di tensione e percentuale di carica
-    // const voltages = data.map((point) => point.V)
-    // const charges = data.map((point) => point.C)
+  //   // // Estrai gli array di tensione e percentuale di carica
+  //   // const voltages = data.map((point) => point.V)
+  //   // const charges = data.map((point) => point.C)
 
-    // // Crea la spline cubica
-    // const spline = new Spline(voltages, charges)
-    // spline.at(voltage)
+  //   // // Crea la spline cubica
+  //   // const spline = new Spline(voltages, charges)
+  //   // spline.at(voltage)
 
-    for (let i = 0; i < data.length - 1; i++) {
-      const V1 = data[i].V,
-        C1 = data[i].C
-      const V2 = data[i + 1].V,
-        C2 = data[i + 1].C
+  //   for (let i = 0; i < data.length - 1; i++) {
+  //     const V1 = data[i].V,
+  //       C1 = data[i].C
+  //     const V2 = data[i + 1].V,
+  //       C2 = data[i + 1].C
 
-      if (voltage <= V1 && voltage >= V2) {
-        // Interpolazione lineare tra i due punti
-        return formatPercBattery(C1 + ((C2 - C1) / (V2 - V1)) * (voltage - V1))
-      }
-    }
+  //     if (voltage <= V1 && voltage >= V2) {
+  //       // Interpolazione lineare tra i due punti
+  //       return formatPercBattery(C1 + ((C2 - C1) / (V2 - V1)) * (voltage - V1))
+  //     }
+  //   }
 
-    return formatPercBattery(voltage > 13.6 ? 100 : 0) // Valori fuori range
-  }
+  //   return formatPercBattery(voltage > 13.6 ? 100 : 0) // Valori fuori range
+  // }
 
   const renderColorfulLegendText = (value, entry) => {
     const { color } = entry
@@ -303,7 +303,7 @@ const Monitor = (props) => {
                           bottom: 5,
                         }}
                       >
-                        <text
+                        {/* <text
                           x="50%"
                           y="35%"
                           textAnchor="middle"
@@ -314,7 +314,7 @@ const Monitor = (props) => {
                           style={{ pointerEvents: 'none', opacity: 0.6 }}
                         >
                           {getPercBatteryFromVoltage(data.realtime)}
-                        </text>
+                        </text> */}
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="timestamp" minTickGap={15} tickFormatter={time} />
                         <YAxis
