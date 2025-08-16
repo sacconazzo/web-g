@@ -79,7 +79,7 @@ const views = {
     title: 'Quorum Web3 node',
   },
   dapp: {
-    color: '#2e3748',
+    color: '#191c26',
     title: 'DeFi DApp',
   },
   balance: {
