@@ -159,7 +159,7 @@ function App() {
             >
               <Button
                 variant="outline-primary"
-                className="mr-sm-2"
+                className="mr-sm-2 d-none d-md-block"
                 href="https://www.linkedin.com/in/giona-righini"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -170,7 +170,7 @@ function App() {
             <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">github.com/sacconazzo</Tooltip>}>
               <Button
                 variant="outline-success"
-                className="mr-sm-2 d-none d-md-block"
+                className="mr-sm-2"
                 href="https://github.com/sacconazzo"
                 target="_blank"
                 rel="noopener noreferrer"
