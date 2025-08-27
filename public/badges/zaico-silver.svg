@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>ZAICO Attestations — SILVER</title>
+  <desc>Medaglia circolare argentata con stella, nastro e testo ZAICO Attestations - livello SILVER.</desc>
+  <metadata>
+    {
+      "name": "ZAICO Attestations — Silver",
+      "tier": "Silver",
+      "format": "SVG",
+      "created": "2025-08-27",
+      "rights": "For ZAICO Attestations",
+      "attributes": [
+        {"trait_type":"Tier","value":"Silver"},
+        {"trait_type":"Type","value":"Attestation Badge"}
+      ]
+    }
+  </metadata>
+  <defs>
+    <radialGradient id="grad-silver-base" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#F7FAFD"/>
+      <stop offset="45%" stop-color="#D5DCE4"/>
+      <stop offset="100%" stop-color="#9BA3AE"/>
+    </radialGradient>
+    <linearGradient id="grad-silver-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#8C95A1"/>
+    </linearGradient>
+    <radialGradient id="grad-silver-star" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#BFC6CF"/>
+    </radialGradient>
+    <linearGradient id="grad-ribbon-silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#222831"/>
+      <stop offset="100%" stop-color="#1A1F25"/>
+    </linearGradient>
+    <filter id="ds-silver" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .ui { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, sans-serif; }
+      .title { font-weight: 700; letter-spacing: 4px; }
+      .tier  { font-weight: 800; letter-spacing: 6px; }
+      .small { font-size: 20px; opacity: .7; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <g filter="url(#ds-silver)">
+    <circle cx="512" cy="512" r="380" fill="url(#grad-silver-base)"/>
+    <circle cx="512" cy="512" r="360" fill="none" stroke="url(#grad-silver-ring)" stroke-width="24"/>
+    <ellipse cx="512" cy="380" rx="260" ry="120" fill="#FFFFFF" opacity=".22"/>
+    <text x="512" y="560" class="ui" fill="#000" opacity=".07" font-size="420" text-anchor="middle">Z</text>
+    <text x="512" y="280" class="ui title" fill="#1D232B" font-size="40" text-anchor="middle">ZAICO ATTESTATIONS</text>
+    <text x="512" y="318" class="ui small" fill="#1D232B" text-anchor="middle">SERIES 2025</text>
+
+    <polygon points="512.0,342.0 553.1,455.4 673.7,459.5 578.6,533.6 611.9,649.5 512.0,582.0 412.1,649.5 445.4,533.6 350.3,459.5 470.9,455.4"
+             fill="url(#grad-silver-star)" stroke="#7E8A98" stroke-width="6"/>
+    <circle cx="512" cy="512" r="300" fill="none" stroke="#FFFFFF" stroke-opacity=".4" stroke-width="2" stroke-dasharray="6 10"/>
+
+    <g>
+      <rect x="252" y="682" width="520" height="96" rx="24" fill="url(#grad-ribbon-silver)" stroke="#000" stroke-opacity=".28"/>
+      <polygon points="252,730 192,702 192,758" fill="#101317"/>
+      <polygon points="772,730 832,702 832,758" fill="#101317"/>
+      <text x="512" y="745" class="ui tier" fill="#FFFFFF" font-size="48" text-anchor="middle">SILVER</text>
+    </g>
+  </g>
+</svg>
