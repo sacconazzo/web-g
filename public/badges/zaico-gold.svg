@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <title>ZAICO Attestations — GOLD</title>
-  <desc>Medaglia circolare dorata con stella, nastro e testo ZAICO Attestations - livello GOLD.</desc>
+  <title>ZAICO ATTESTATION — GOLD</title>
+  <desc>Medaglia circolare dorata con stella, nastro e testo ZAICO ATTESTATION - livello GOLD.</desc>
   <metadata>
     {
-      "name": "ZAICO Attestations — Gold",
+      "name": "ZAICO ATTESTATION — Gold",
       "tier": "Gold",
       "format": "SVG",
       "created": "2025-08-27",
-      "rights": "For ZAICO Attestations",
+      "rights": "For ZAICO ATTESTATION",
       "attributes": [
         {"trait_type":"Tier","value":"Gold"},
         {"trait_type":"Type","value":"Attestation Badge"}
@@ -63,7 +63,7 @@
     <text x="512" y="560" class="ui" fill="#000" opacity=".08" font-size="420" text-anchor="middle">Z</text>
 
     <!-- Testo superiore -->
-    <text x="512" y="280" class="ui title" fill="#2A2100" font-size="40" text-anchor="middle">ZAICO ATTESTATIONS</text>
+    <text x="512" y="280" class="ui title" fill="#2A2100" font-size="40" text-anchor="middle">ZAICO ATTESTATION</text>
     <text x="512" y="318" class="ui small" fill="#2A2100" text-anchor="middle">SERIES 2025</text>
 
     <!-- Stella -->

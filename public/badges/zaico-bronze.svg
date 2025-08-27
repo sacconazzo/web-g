@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <title>ZAICO Attestations — BRONZE</title>
-  <desc>Medaglia circolare color bronzo con stella, nastro e testo ZAICO Attestations - livello BRONZE.</desc>
+  <title>ZAICO ATTESTATION — BRONZE</title>
+  <desc>Medaglia circolare color bronzo con stella, nastro e testo ZAICO ATTESTATION - livello BRONZE.</desc>
   <metadata>
     {
-      "name": "ZAICO Attestations — Bronze",
+      "name": "ZAICO ATTESTATION — Bronze",
       "tier": "Bronze",
       "format": "SVG",
       "created": "2025-08-27",
-      "rights": "For ZAICO Attestations",
+      "rights": "For ZAICO ATTESTATION",
       "attributes": [
         {"trait_type":"Tier","value":"Bronze"},
         {"trait_type":"Type","value":"Attestation Badge"}
@@ -48,7 +48,7 @@
     <circle cx="512" cy="512" r="360" fill="none" stroke="url(#grad-bronze-ring)" stroke-width="24"/>
     <ellipse cx="512" cy="380" rx="260" ry="120" fill="#FFFFFF" opacity=".16"/>
     <text x="512" y="560" class="ui" fill="#000" opacity=".08" font-size="420" text-anchor="middle">Z</text>
-    <text x="512" y="280" class="ui title" fill="#2A1409" font-size="40" text-anchor="middle">ZAICO ATTESTATIONS</text>
+    <text x="512" y="280" class="ui title" fill="#2A1409" font-size="40" text-anchor="middle">ZAICO ATTESTATION</text>
     <text x="512" y="318" class="ui small" fill="#2A1409" text-anchor="middle">SERIES 2025</text>
 
     <polygon points="512.0,342.0 553.1,455.4 673.7,459.5 578.6,533.6 611.9,649.5 512.0,582.0 412.1,649.5 445.4,533.6 350.3,459.5 470.9,455.4"
